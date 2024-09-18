@@ -62,7 +62,11 @@ void StandardScene::load() {
 }
 
 // ==================================================== Main Loop ====================================================
-void StandardScene::update() {
+void StandardScene::update() {    
+    // Update offset by sine wave
+    offset = sin(glfwGetTime()) / 2.0f;
+    standardShader.setFloat("offsetX", offset);
+
     // input
     processInput();
 

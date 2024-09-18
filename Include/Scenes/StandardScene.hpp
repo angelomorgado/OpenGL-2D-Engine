@@ -31,6 +31,7 @@ private:
     std::array<int, 3> indices;
     unsigned int VBO, VAO, EBO;
     Shader standardShader;
+    float offset;
 
     void processInput();
 };

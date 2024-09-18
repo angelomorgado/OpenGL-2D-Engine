@@ -3,12 +3,14 @@
 #include <INIReader.h>
 #include <SceneManager.hpp>
 #include <Scenes/StandardScene.hpp>
+#include <Scenes/StandardTextureScene.hpp>
 
 int main() {
     SceneManager& sceneManager = SceneManager::getInstance();
 
     // Register scenes
     sceneManager.registerScene("StandardScene", []() { return std::make_shared<StandardScene>(); });
+    sceneManager.registerScene("StandardTextureScene", []() { return std::make_shared<StandardTextureScene>(); });
     // sceneManager.registerScene("GameScene", []() { return std::make_shared<GameScene>(); });
 
     // Load a scene by name

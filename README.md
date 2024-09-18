@@ -46,6 +46,8 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 
 [Shaders](#shaders)
 
+[Textures](#textures)
+
 ---
 
 ### Scenes
@@ -172,4 +174,35 @@ void setVec4(std::string& name, float x, float y, float z, float w);
 void setMat2(std::string& name,  glm::mat2& mat);
 void setMat3(std::string& name,  glm::mat3& mat);
 void setMat4(std::string& name,  glm::mat4& mat);
+```
+
+---
+
+### Textures
+
+This engine can use textures to render sprites. To load a texture:
+    
+```cpp
+Texture texture;
+
+// In the load method of the scene
+texture.load("Textures/texture.png");
+
+// In the render method of the scene before drawing the object
+texture.bind();
+```
+
+You may also unbind and clean the texture after rendering the object:
+
+```cpp
+texture.unbind();
+
+// In the clean method of the scene
+texture.clean();
+```
+
+To get the texture ID:
+
+```cpp
+GLuint textureID = texture.getID();
 ```

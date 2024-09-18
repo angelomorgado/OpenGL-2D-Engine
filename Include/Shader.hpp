@@ -1,13 +1,10 @@
 /*
-    Shader.h:
+    Shader.hpp:
 
         - Makes it easier initializing shaders and communication between the shader files and the main program
 */
-
-#pragma once
-
-#ifndef SHADER_H
-#define SHADER_H
+#ifndef SHADER_HPP
+#define SHADER_HPP
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
