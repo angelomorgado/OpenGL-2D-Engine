@@ -17,7 +17,9 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
     
 ### Scenes
 
-- StandardScene: A scene that renders a simple window.
+- StandardScene: A scene that renders a simple window with a moving triangle that changes color.
+
+- StandardTextureScene: A scene that shows a rectangle with a texture moving.
 
 ### Features
 
