@@ -10,7 +10,7 @@ StandardScene::StandardScene() {
     fullscreen = reader.GetBoolean("Window", "fullscreen", false);
     resizable = reader.GetBoolean("Window", "resizable", true);
     
-    window = Setup::complete_setup(title.c_str(), screen_width, screen_height, fullscreen, resizable, cursor_locked);
+    window = Setup::complete_setup(title.c_str(), screen_width, screen_height, fullscreen, resizable);
 
     vertices = {
         // positions         // colors
@@ -25,7 +25,7 @@ StandardScene::StandardScene() {
     };  
 
     // Lock Mouse
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glfwSetCursorPosCallback(window, Callbacks::mouse_callback);
 
 }

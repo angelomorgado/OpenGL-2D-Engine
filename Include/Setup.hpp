@@ -17,10 +17,10 @@ class Setup{
     public:
         static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
         static void glfw_setup();
-        static GLFWwindow* window_setup(const char* title = "Window", int width = 800, int height = 600, bool fullscreen = false, bool resizable = true, bool cursor_locked = false);
+        static GLFWwindow* window_setup(const char* title = "Window", int width = 800, int height = 600, bool fullscreen = false, bool resizable = true);
         static void glad_setup();
         static void printInfo();
-        static GLFWwindow* complete_setup(const char* title = "Window", int width = 800, int height = 600, bool fullscreen = false, bool resizable = true, bool cursor_locked = false);
+        static GLFWwindow* complete_setup(const char* title = "Window", int width = 800, int height = 600, bool fullscreen = false, bool resizable = true);
 };
 
 #endif

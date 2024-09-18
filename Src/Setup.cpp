@@ -12,7 +12,7 @@ void Setup::glfw_setup() {
 	#endif
 }
 
-GLFWwindow* Setup::window_setup(const char* title, int width, int height, bool fullscreen, bool resizable, bool cursor_locked) {
+GLFWwindow* Setup::window_setup(const char* title, int width, int height, bool fullscreen, bool resizable) {
     GLFWwindow* window = glfwCreateWindow(width, height, title, NULL, NULL);
 
 	if (window == NULL)
@@ -59,10 +59,10 @@ void Setup::printInfo() {
 }
 
 // It automatically sets up everything and returns the window
-GLFWwindow* Setup::complete_setup(const char* title, int width, int height, bool fullscreen, bool resizable, bool cursor_locked)
+GLFWwindow* Setup::complete_setup(const char* title, int width, int height, bool fullscreen, bool resizable)
 {
     glfw_setup();
-    GLFWwindow* window = window_setup(title, width, height, fullscreen, resizable, cursor_locked);
+    GLFWwindow* window = window_setup(title, width, height, fullscreen, resizable);
     glad_setup();
 	printInfo();
 
