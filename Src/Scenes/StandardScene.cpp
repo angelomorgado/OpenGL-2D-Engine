@@ -9,7 +9,6 @@ StandardScene::StandardScene() {
     screen_height = reader.GetInteger("Window", "height", 600);
     fullscreen = reader.GetBoolean("Window", "fullscreen", false);
     resizable = reader.GetBoolean("Window", "resizable", true);
-    cursor_locked = reader.GetBoolean("Window", "cursor_locked", true);
     
     window = Setup::complete_setup(title.c_str(), screen_width, screen_height, fullscreen, resizable, cursor_locked);
 

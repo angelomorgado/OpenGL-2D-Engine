@@ -26,7 +26,6 @@ private:
     std::string title;
     bool fullscreen;
     bool resizable;
-    bool cursor_locked;
     
     std::array<float, 18> vertices;
     std::array<int, 3> indices;
