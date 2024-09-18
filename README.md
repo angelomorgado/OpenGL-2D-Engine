@@ -34,3 +34,28 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 - [ ] Audio support
 - [ ] Physics support
 - [ ] Tilemap support
+
+---
+## Documentation
+
+### Callbacks
+
+This engine uses callbacks to handle input and update the scene. If the scene has its own callback function it can be defined in the scene class. However, if the scene uses the same callback as other scenes, the callback function must be defined in the Callbacks class in order to avoid code duplication and keep it organized.
+
+To define mouse callbacks:
+```cpp
+// In the constructor of the scene
+// Lock Mouse
+glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); // In order to lock the mouse in the window (Optional)
+glfwSetCursorPosCallback(window, Callbacks::mouse_callback_function);
+```
+
+To call the keyboard callback:
+```cpp
+// In the main loop
+Callbacks::keyboard_callback_function(window); // If the callback is defined in the Callbacks class
+
+// or 
+
+keyboard_callback_function(); // If the callback is defined in the scene class
+```

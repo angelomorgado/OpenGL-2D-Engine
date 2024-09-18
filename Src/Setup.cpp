@@ -25,12 +25,6 @@ GLFWwindow* Setup::window_setup(const char* title, int width, int height, bool f
 	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window, Callbacks::framebuffer_size_callback);
 
-	// TODO: Mouse callback
-	if (cursor_locked) {
-		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-		glfwSetCursorPosCallback(window, Callbacks::mouse_callback);
-	}
-
 	if (fullscreen) {
 		GLFWmonitor* monitor = glfwGetPrimaryMonitor();
         const GLFWvidmode* mode = glfwGetVideoMode(monitor);

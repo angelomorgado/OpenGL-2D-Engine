@@ -16,7 +16,6 @@
 class Callbacks
 {
     public:
-        static void processInput(GLFWwindow *window);
         static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
         static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 };

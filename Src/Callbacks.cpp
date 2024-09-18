@@ -1,10 +1,6 @@
-#include <Callbacks.hpp>
+// In this page we define the various callbacks functions, if we need to use the same callbacks in multiple scenes we can define them here and call them from the scene. This way we can avoid code duplication and keep the code clean and organized, such as keybindings, mouse input, etc.
 
-void Callbacks::processInput(GLFWwindow *window)
-{
-    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
-}
+#include <Callbacks.hpp>
 
 // Whenever the window size changed (by OS or user resize) this callback function executes
 void Callbacks::framebuffer_size_callback(GLFWwindow* window, int width, int height)

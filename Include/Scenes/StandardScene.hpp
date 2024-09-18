@@ -32,6 +32,8 @@ private:
     std::array<int, 3> indices;
     unsigned int VBO, VAO, EBO;
     Shader standardShader;
+
+    void processInput();
 };
 
 #endif // STANDARDSCENE_HPP

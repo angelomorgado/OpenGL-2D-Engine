@@ -1,9 +1,10 @@
 #include <Scenes/StandardScene.hpp>
 #include <SceneManager.hpp>
 
+// ==================================================== Setup ====================================================
 StandardScene::StandardScene() {
     INIReader reader("Config.ini");
-    title = reader.Get("Window", "title", "LearnOpenGL");
+    title = reader.Get("Window", "title", "Window");
     screen_width = reader.GetInteger("Window", "width", 800);
     screen_height = reader.GetInteger("Window", "height", 600);
     fullscreen = reader.GetBoolean("Window", "fullscreen", false);
@@ -23,6 +24,11 @@ StandardScene::StandardScene() {
         0, 1, 2,   // first triangle
         // 1, 2, 3    // second triangle
     };  
+
+    // Lock Mouse
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetCursorPosCallback(window, Callbacks::mouse_callback);
+
 }
 
 void StandardScene::load() {
@@ -56,9 +62,10 @@ void StandardScene::load() {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
+// ==================================================== Main Loop ====================================================
 void StandardScene::update() {
     // input
-    Callbacks::processInput(window);
+    processInput();
 
     // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
     // -------------------------------------------------------------------------------
@@ -77,9 +84,17 @@ void StandardScene::render() {
     glBindVertexArray(0);
 }
 
+// =======================================================================================================
+
 int StandardScene::clean() {
     glfwTerminate();
     return 0;
+}
+
+void StandardScene::processInput()
+{
+    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
 }
 
 GLFWwindow* StandardScene::getWindow() {
