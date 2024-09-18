@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: g++.exe build active file",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "-I${workspaceFolder}/Include",
+                "-I${workspaceFolder}/Dependencies/Include",
+                "-I${workspaceFolder}/Dependencies/Include/imgui",
+                "-L${workspaceFolder}/Lib",
+                "${workspaceFolder}/Src/\\*.cpp",
+                "${workspaceFolder}/Src/Scenes/\\*.cpp",
+                "${workspaceFolder}/Dependencies/Src/\\*.c*",
+                "${workspaceFolder}/Dependencies/Src/imgui/\\*",
+                "-lglfw3dll",
+                "-lassimp",
+                "-o",
+
+                "${workspaceFolder}/Main.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        }
+    ]
+}
