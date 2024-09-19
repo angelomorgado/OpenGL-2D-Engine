@@ -183,7 +183,7 @@ void setMat4(std::string& name,  glm::mat4& mat);
 
 ### Textures
 
-This engine can use textures to render sprites. To load a texture:
+This engine can apply textures to objects. To load a texture:
     
 ```cpp
 Texture texture;
