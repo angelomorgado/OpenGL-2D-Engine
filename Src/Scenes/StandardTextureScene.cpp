@@ -41,7 +41,8 @@ void StandardTextureScene::load() {
     standardShader.load("Shaders/standardTexture.vert", "Shaders/standardTexture.frag");
 
     // Load textures
-    texture1.load("Media/Textures/wall.jpg");
+    texture1.load("Media/Textures/container.jpg", &standardShader, "texture1");
+    texture2.load("Media/Textures/awesomeface.png", &standardShader, "texture2");
 
     // Load objects on the GPU
     // 1: Triangle
@@ -94,6 +95,7 @@ void StandardTextureScene::render() {
 
     standardShader.use();
     texture1.bind();
+    texture2.bind();
     glBindVertexArray(VAO);
     // glDrawArrays(GL_TRIANGLES, 0, 3);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

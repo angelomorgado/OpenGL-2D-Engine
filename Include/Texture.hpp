@@ -6,19 +6,24 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 #include <iostream>
+#include <string>
+
+#include <Shader.hpp>
 
 class Texture {
 public:
-    void load(const char* path);
+    void load(const char* path, Shader* shader = nullptr, std::string uniformName = "texture1");
     void bind();
     void unbind();
     void clean();
     unsigned int getID();
 private:
-    unsigned int ID;
+    unsigned int ID, textureUnit;
     const char* path;
     int width, height, nrChannels;
     unsigned char* data;
+
+    static unsigned int textureCount;  // Static variable to track texture count
 };
 
 #endif

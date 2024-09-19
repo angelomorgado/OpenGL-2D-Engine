@@ -34,6 +34,7 @@ private:
     unsigned int VBO, VAO, EBO;
     Shader standardShader;
     Texture texture1;
+    Texture texture2;
     float offset;
 
     void processInput();

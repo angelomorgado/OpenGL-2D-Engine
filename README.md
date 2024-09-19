@@ -29,6 +29,7 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 - [x] Input handling
 - [x] Shader support
 - [x] Makefile support for Linux
+- [x] Texture support
 - [ ] 2D Object import/file from file/image
 - [ ] Sprite support
 - [ ] Collision detection
@@ -188,7 +189,7 @@ This engine can use textures to render sprites. To load a texture:
 Texture texture;
 
 // In the load method of the scene
-texture.load("Textures/texture.png");
+texture.load("Textures/texture.png", Shader* shader = nullptr, std::string uniformName); // the shader and uniform name are optional if you want to use only one texture in the object but are recommended to use
 
 // In the render method of the scene before drawing the object
 texture.bind();
