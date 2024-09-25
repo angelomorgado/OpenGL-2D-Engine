@@ -31,6 +31,8 @@ StandardTextureScene::StandardTextureScene() {
         0.5f, 1.0f   // top-center corner
     };  
 
+    square.createSquare();
+
     // Lock Mouse
     // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glfwSetCursorPosCallback(window, Callbacks::mouse_callback);
@@ -53,12 +55,12 @@ void StandardTextureScene::load() {
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     // Copy our vertices array into the buffer for OpenGL to use
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, square.vertices.size() * sizeof(float), square.vertices.data(), GL_STATIC_DRAW);
     // Generate and bind Element Buffer Object (EBO)
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     // Copy our vertices array into the buffer for OpenGL to use
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices.data(), GL_STATIC_DRAW); 
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, square.indices.size() * sizeof(unsigned int), square.indices.data(), GL_STATIC_DRAW); 
     // Set the vertex attributes pointers
     //      Position attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0); // offset, stride, pointer, divisor, integer, normalized
@@ -97,8 +99,7 @@ void StandardTextureScene::render() {
     texture1.bind();
     texture2.bind();
     glBindVertexArray(VAO);
-    // glDrawArrays(GL_TRIANGLES, 0, 3);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, square.numberOfVertices, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }
 

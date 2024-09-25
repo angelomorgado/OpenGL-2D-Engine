@@ -11,6 +11,7 @@
 #include <INIReader.h>
 #include <Shader.hpp>
 #include <Texture.hpp>
+#include <Shapes.hpp>
 
 class StandardTextureScene : public Scene {
 public:
@@ -31,6 +32,8 @@ private:
     std::array<float, 32> vertices;
     std::array<int, 6> indices;
     std::array<float, 6> texCoords;
+    Shape square;
+
     unsigned int VBO, VAO, EBO;
     Shader standardShader;
     Texture texture1;
