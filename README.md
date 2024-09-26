@@ -159,6 +159,7 @@ Shader standardShader;
 
 // In the load method of the scene
 standardShader.load("Shaders/standard.vert", "Shaders/standard.frag"); // You can also load a geometry shader but it is optional
+standardShader.load("standard"); // You can also load a shader from a filename and it will load the vertex, fragment and geometry shaders with the same name. They must be in the Shaders folder and also have the ".vert", ".frag" and ".geom" extensions
 
 // In the render method of the scene
 standardShader.use();
