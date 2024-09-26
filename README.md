@@ -163,6 +163,9 @@ standardShader.load("standard"); // You can also load a shader from a filename a
 
 // In the render method of the scene
 standardShader.use();
+
+// In the clean method of the scene
+standardShader.clean();
 ```
 
 If you have uniforms in the shader, you can set them like this:

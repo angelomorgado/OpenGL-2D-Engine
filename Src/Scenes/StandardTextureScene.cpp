@@ -64,6 +64,11 @@ void StandardTextureScene::render() {
 
 int StandardTextureScene::clean() {
     square.clean();
+    triangle.clean();
+    texture1.clean();
+    texture2.clean();
+    standardShader.clean();
+    textureShader.clean();
 
     glfwTerminate();
     return 0;
