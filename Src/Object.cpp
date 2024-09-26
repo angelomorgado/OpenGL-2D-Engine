@@ -6,7 +6,7 @@ void Object::load(Shape shape, Shader shader, std::vector<Texture> textures, glm
     this->shader = shader;
     this->position = position;
     this->rotation = rotation;
-    this->objectScale = scale;
+    this->scale = scale;
 
     // Load objects on the GPU
     // 1: Triangle
@@ -57,32 +57,14 @@ void Object::clean() {
     glDeleteBuffers(1, &EBO);
 }
 
-void Object::translate(glm::vec3 translation) {
-    position += translation;
-    updateTransform();
-}
-
-void Object::rotate(float rotation) {
-    this->rotation += rotation;
-    updateTransform();
-}
-
-void Object::scale(glm::vec3 scale) {
-    this->objectScale += scale;
-    updateTransform();
-}
-
-void Object::setTransform(glm::mat4 transform) {
-    this->transform = transform;
-}
-
 void Object::updateTransform() {
     transform = glm::mat4(1.0f);
     transform = glm::translate(transform, position);
     transform = glm::rotate(transform, glm::radians(rotation), glm::vec3(0.0, 0.0, 1.0));
-    transform = glm::scale(transform, objectScale);
+    transform = glm::scale(transform, scale);
 }
 
+// Getters and Setters
 glm::vec3 Object::getPosition() {
     return position;
 }
@@ -92,9 +74,28 @@ float Object::getRotation() {
 }
 
 glm::vec3 Object::getScale() {
-    return objectScale;
+    return scale;
 }
 
 glm::mat4 Object::getTransform() {
     return transform;
+}
+
+void Object::setPosition(glm::vec3 position) {
+    this->position = position;
+    updateTransform();
+}
+
+void Object::setRotation(float rotation) {
+    this->rotation = rotation;
+    updateTransform();
+}
+
+void Object::setScale(glm::vec3 scale) {
+    this->scale = scale;
+    updateTransform();
+}
+
+void Object::setTransform(glm::mat4 transform) {
+    this->transform = transform;
 }

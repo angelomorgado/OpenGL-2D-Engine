@@ -22,16 +22,18 @@ class Object {
         void load(Shape shape, Shader shader, std::vector<Texture> textures = {}, glm::vec3 position = glm::vec3(0.0f), float rotation = 0.0f, glm::vec3 scale = glm::vec3(0.0f));
         void render();
         void clean();
-        void translate(glm::vec3 translation);
-        void rotate(float rotation);
-        void scale(glm::vec3 scale);
-        void setTransform(glm::mat4 transform);
 
         // Getters
         glm::vec3 getPosition();
         float getRotation();
         glm::vec3 getScale();
         glm::mat4 getTransform();
+
+        // Setters
+        void setPosition(glm::vec3 position);
+        void setRotation(float rotation);
+        void setScale(glm::vec3 scale);
+        void setTransform(glm::mat4 transform);
     private:
         // Private attributes
         Shape shape;
@@ -39,7 +41,7 @@ class Object {
         Shader shader;
         glm::vec3 position;
         float rotation;
-        glm::vec3 objectScale;
+        glm::vec3 scale;
         glm::mat4 transform;
 
         unsigned int VBO, VAO, EBO;

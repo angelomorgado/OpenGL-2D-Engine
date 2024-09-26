@@ -286,17 +286,15 @@ void render() // Renders the object
 
 void clean() // Cleans the object from the GPU
 
-void translate(glm::vec3 translation) // Translates the object
-
-void rotate(float rotation) // Rotates the object in degrees
-
-void scale(glm::vec3 scale) // Scales the object
-
-void setTransform(glm::mat4 transform) // Sets the transformation matrix if you want to set it outside the class
-
 // Getters
 glm::vec3 getPosition()
 float getRotation()
 glm::vec3 getScale()
 glm::mat4 getTransform()
+
+// Setters
+void setPosition(glm::vec3 position)
+void setRotation(float rotation)
+void setScale(glm::vec3 scale)
+void setTransform(glm::mat4 transform) // Sets the transformation matrix if you want to set it outside the class
 ```

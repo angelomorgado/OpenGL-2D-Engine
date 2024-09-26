@@ -29,13 +29,18 @@ void StandardTextureScene::load() {
     texture2.load("Media/Textures/awesomeface.png", &standardShader, "texture2");
 
     // Load objects
-    square.load(squareShape, standardShader, {texture1, texture2}, glm::vec3(0.0f, 0.0f, 0.0f), 0.0f, glm::vec3(1.0f));
+    square.load(squareShape, standardShader, {texture1, texture2}, glm::vec3(0.0f, 0.0f, 0.0f), 0.0f, glm::vec3(0.5f));
 }
 
 // ==================================================== Main Loop ====================================================
 void StandardTextureScene::update() {    
     // input
     processInput();
+
+    // Move the square with sine
+    offset = sin(glfwGetTime()) / 2.0f;
+    square.setPosition(glm::vec3(offset, offset, 0.0f));
+    square.setRotation(glfwGetTime() * -3.0f);
 
     // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
     // -------------------------------------------------------------------------------
