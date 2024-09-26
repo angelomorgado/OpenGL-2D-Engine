@@ -22,6 +22,7 @@ class Shader
     
         // Public methods
         void load(const char* vertexPath, const char* fragmentPath, const char* geometryPath = nullptr); // Geometry shaders are optional
+        void load(const char* fileName); // Automatically fetches all the necessary shaders with this name
         void use();
         void setBool(const std::string& name, bool value) const;
         void setInt(const std::string& name, int value) const;

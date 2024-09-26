@@ -91,6 +91,38 @@ void Shader::load(const char* vertexPath, const char* fragmentPath, const char* 
         glDeleteShader(geometry);
 }
 
+void Shader::load(const char* fileName) {
+    // Construct the paths for the shader files
+    std::string vertexPath = "Shaders/" + std::string(fileName) + ".vert";
+    std::string fragmentPath = "Shaders/" + std::string(fileName) + ".frag";
+    std::string geometryPath = "Shaders/" + std::string(fileName) + ".geom";
+
+    // Check if the vertex and fragment shader files exist
+    std::ifstream vShaderFile(vertexPath);
+    std::ifstream fShaderFile(fragmentPath);
+
+    if (!vShaderFile.good() || !fShaderFile.good()) {
+        std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ" << std::endl;
+        return;
+    }
+
+    // Close shader files after checking existence
+    vShaderFile.close();
+    fShaderFile.close();
+
+    // Check if the geometry shader file exists (optional)
+    std::ifstream gShaderFile(geometryPath);
+    bool hasGeometryShader = gShaderFile.good();
+    gShaderFile.close();  // Always close after check
+
+    // Load shaders accordingly
+    if (hasGeometryShader) {
+        load(vertexPath.c_str(), fragmentPath.c_str(), geometryPath.c_str());
+    } else {
+        load(vertexPath.c_str(), fragmentPath.c_str());
+    }
+}
+
 void Shader::use() {
     glUseProgram(ID);
 }

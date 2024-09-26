@@ -36,12 +36,12 @@ private:
     bool resizable;
     
     // Object Attributes
-    Shape squareShape;
-    Shader standardShader;
+    Shape squareShape, triangleShape;
+    Shader standardShader, textureShader;
     Texture texture1;
     Texture texture2;
     float offset;
-    Object square;
+    Object square, triangle;
 
     void processInput();
 };

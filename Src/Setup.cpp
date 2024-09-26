@@ -67,7 +67,7 @@ GLFWwindow* Setup::complete_setup(const char* title, int width, int height, bool
 	printInfo();
 
     // Z buffer (depth buffer)
-	glEnable(GL_DEPTH_TEST);
+	// glEnable(GL_DEPTH_TEST);
 
 	return window;
 }
