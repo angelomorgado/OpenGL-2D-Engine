@@ -34,6 +34,7 @@ void Texture::load(const char* path, Shader* shader, std::string uniformName) {
     } else {
         std::cout << "Failed to load texture" << std::endl;
     }
+    stbi_set_flip_vertically_on_load(true);
     stbi_image_free(data);
 
     textureUnit = textureCount;

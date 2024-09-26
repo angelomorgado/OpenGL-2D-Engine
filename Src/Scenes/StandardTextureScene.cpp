@@ -59,9 +59,10 @@ void StandardTextureScene::load() {
 
 // ==================================================== Main Loop ====================================================
 void StandardTextureScene::update() {    
-    // Update offset by sine wave
-    offset = sin(glfwGetTime()) / 2.0f;
-    standardShader.setFloat("offsetX", offset);
+    glm::mat4 trans = glm::mat4(1.0f);
+    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));  
+    standardShader.setMat4("transform", trans);
 
     // input
     processInput();
