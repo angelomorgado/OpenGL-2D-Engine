@@ -256,3 +256,47 @@ glEnableVertexAttribArray(2);
 glBindVertexArray(0);
 glBindBuffer(GL_ARRAY_BUFFER, 0);
 ```
+
+---
+
+### Object
+
+The Object class represents a renderable object that can be loaded with a shape, shader, and textures, and transformed through translation, rotation, and scaling. Below is how to use it:
+
+```cpp
+
+Object object;
+
+// In the load method of the scene
+object.load(shape, shader, {texture1, texture2}, position, rotation, scale);
+
+// In the render method of the scene
+object.render();
+
+// In the clean method of the scene
+object.clean();
+```
+
+This class has more methods that aim to facilitate its use:
+
+```cpp
+void load(Shape shape, Shader shader, std::vector<Texture> textures = {}, glm::vec3 position = glm::vec3(0.0f), float rotation = 0.0f, glm::vec3 scale = glm::vec3(0.0f)) // Loads the object to the GPU
+
+void render() // Renders the object
+
+void clean() // Cleans the object from the GPU
+
+void translate(glm::vec3 translation) // Translates the object
+
+void rotate(float rotation) // Rotates the object in degrees
+
+void scale(glm::vec3 scale) // Scales the object
+
+void setTransform(glm::mat4 transform) // Sets the transformation matrix if you want to set it outside the class
+
+// Getters
+glm::vec3 getPosition()
+float getRotation()
+glm::vec3 getScale()
+glm::mat4 getTransform()
+```

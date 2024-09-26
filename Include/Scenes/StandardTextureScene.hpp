@@ -12,6 +12,7 @@
 #include <Shader.hpp>
 #include <Texture.hpp>
 #include <Shapes.hpp>
+#include <Object.hpp>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -35,12 +36,12 @@ private:
     bool resizable;
     
     // Object Attributes
-    unsigned int VBO, VAO, EBO;
-    Shape square;
+    Shape squareShape;
     Shader standardShader;
     Texture texture1;
     Texture texture2;
     float offset;
+    Object square;
 
     void processInput();
 };

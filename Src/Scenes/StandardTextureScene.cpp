@@ -12,14 +12,15 @@ StandardTextureScene::StandardTextureScene() {
     
     window = Setup::complete_setup(title.c_str(), screen_width, screen_height, fullscreen, resizable);
 
-    square.createSquare();
-
     // Lock Mouse
     // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glfwSetCursorPosCallback(window, Callbacks::mouse_callback);
 }
 
 void StandardTextureScene::load() {
+    // Shapes
+    squareShape.createSquare();
+
     // Load shaders
     standardShader.load("Shaders/standardTexture.vert", "Shaders/standardTexture.frag");
 
@@ -27,43 +28,12 @@ void StandardTextureScene::load() {
     texture1.load("Media/Textures/container.jpg", &standardShader, "texture1");
     texture2.load("Media/Textures/awesomeface.png", &standardShader, "texture2");
 
-    // Load objects on the GPU
-    // 1: Triangle
-    // Generate and bind Vertex Array Object (VAO)
-    glGenVertexArrays(1, &VAO);  // Generate VAO
-    glBindVertexArray(VAO);      // Bind VAO
-    // Generate and bind Vertex Buffer Object (VBO)
-    glGenBuffers(1, &VBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    // Copy our vertices array into the buffer for OpenGL to use
-    glBufferData(GL_ARRAY_BUFFER, square.vertices.size() * sizeof(float), square.vertices.data(), GL_STATIC_DRAW);
-    // Generate and bind Element Buffer Object (EBO)
-    glGenBuffers(1, &EBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    // Copy our vertices array into the buffer for OpenGL to use
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, square.indices.size() * sizeof(unsigned int), square.indices.data(), GL_STATIC_DRAW); 
-    // Set the vertex attributes pointers
-    //      Position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0); // offset, stride, pointer, divisor, integer, normalized
-    glEnableVertexAttribArray(0);  
-    //      Color attribute
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3* sizeof(float)));
-    glEnableVertexAttribArray(1);  
-    //      Texture attribute
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6* sizeof(float)));
-    glEnableVertexAttribArray(2);  
-    // Unbind VAO and VBO for safety
-    glBindVertexArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    // Load objects
+    square.load(squareShape, standardShader, {texture1, texture2}, glm::vec3(0.0f, 0.0f, 0.0f), 0.0f, glm::vec3(1.0f));
 }
 
 // ==================================================== Main Loop ====================================================
 void StandardTextureScene::update() {    
-    glm::mat4 trans = glm::mat4(1.0f);
-    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
-    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));  
-    standardShader.setMat4("transform", trans);
-
     // input
     processInput();
 
@@ -77,17 +47,14 @@ void StandardTextureScene::render() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    standardShader.use();
-    texture1.bind();
-    texture2.bind();
-    glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, square.numberOfVertices, GL_UNSIGNED_INT, 0);
-    glBindVertexArray(0);
+    square.render();
 }
 
 // =======================================================================================================
 
 int StandardTextureScene::clean() {
+    square.clean();
+
     glfwTerminate();
     return 0;
 }
