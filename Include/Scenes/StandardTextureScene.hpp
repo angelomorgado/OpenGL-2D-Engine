@@ -22,6 +22,7 @@ public:
     int clean() override;
     GLFWwindow* getWindow() override;
 private:
+    // Window attributes
     GLFWwindow* window;
     int screen_width;
     int screen_height;
@@ -29,12 +30,9 @@ private:
     bool fullscreen;
     bool resizable;
     
-    std::array<float, 32> vertices;
-    std::array<int, 6> indices;
-    std::array<float, 6> texCoords;
-    Shape square;
-
+    // Object Attributes
     unsigned int VBO, VAO, EBO;
+    Shape square;
     Shader standardShader;
     Texture texture1;
     Texture texture2;

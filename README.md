@@ -51,6 +51,8 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 
 [Textures](#textures)
 
+[Shapes](#shapes)
+
 ---
 
 ### Scenes
@@ -208,4 +210,49 @@ To get the texture ID:
 
 ```cpp
 GLuint textureID = texture.getID();
+```
+
+---
+
+### Shapes
+
+The engine has a class that can create predefined shapes. It creates three variables: vertices (It contains vertices position, color, and texture coordinate), indices, and number of vertices. Currently there are three shapes available: square, triangle, and circle.
+
+To create a shape:
+
+```cpp
+Shape shape;
+shape.createSquare();
+shape.createTriangle();
+shape.createCircle(numberOfSegments); // The number of segments is so you can create a circle with more or less vertices (More segments = more perfect circle however more computational power is needed)
+```
+
+In order to send the shape to the GPU, it uses the `square.vertices.data()`, `square.vertices.size()`, `square.indices.data()`, and `square.indices.size()` methods. Here is an example of how to send the square to the GPU:
+
+```cpp
+glGenVertexArrays(1, &VAO);  // Generate VAO
+glBindVertexArray(VAO);      // Bind VAO
+// Generate and bind Vertex Buffer Object (VBO)
+glGenBuffers(1, &VBO);
+glBindBuffer(GL_ARRAY_BUFFER, VBO);
+// Copy our vertices array into the buffer for OpenGL to use
+glBufferData(GL_ARRAY_BUFFER, square.vertices.size() * sizeof(float), square.vertices.data(), GL_STATIC_DRAW);
+// Generate and bind Element Buffer Object (EBO)
+glGenBuffers(1, &EBO);
+glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+// Copy our vertices array into the buffer for OpenGL to use
+glBufferData(GL_ELEMENT_ARRAY_BUFFER, square.indices.size() * sizeof(unsigned int), square.indices.data(), GL_STATIC_DRAW); 
+// Set the vertex attributes pointers
+//      Position attribute
+glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0); // offset, stride, pointer, divisor, integer, normalized
+glEnableVertexAttribArray(0);  
+//      Color attribute
+glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3* sizeof(float)));
+glEnableVertexAttribArray(1);  
+//      Texture attribute
+glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6* sizeof(float)));
+glEnableVertexAttribArray(2);  
+// Unbind VAO and VBO for safety
+glBindVertexArray(0);
+glBindBuffer(GL_ARRAY_BUFFER, 0);
 ```
