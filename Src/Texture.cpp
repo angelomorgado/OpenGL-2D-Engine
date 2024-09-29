@@ -2,11 +2,9 @@
 
 #include <Texture.hpp>
 
-// Initialize static variable
-unsigned int Texture::textureCount = 0;
-
 void Texture::load(const char* path, Shader* shader, std::string uniformName) {
     this->path = path;
+    this->uniformName = uniformName.c_str();
 
     glGenTextures(1, &ID);
     glBindTexture(GL_TEXTURE_2D, ID);
@@ -36,17 +34,9 @@ void Texture::load(const char* path, Shader* shader, std::string uniformName) {
     }
     stbi_set_flip_vertically_on_load(true);
     stbi_image_free(data);
-
-    textureUnit = textureCount;
-    textureCount++;
-
-    if (shader) {
-        shader->use();
-        shader->setInt(uniformName, textureUnit);
-    }
 }
 
-void Texture::bind() {
+void Texture::bind(int textureUnit) {
     glActiveTexture(GL_TEXTURE0 + textureUnit); 
     glBindTexture(GL_TEXTURE_2D, ID);
 }
@@ -61,4 +51,8 @@ void Texture::clean() {
 
 unsigned int Texture::getID() {
     return ID;
+}
+
+const char* Texture::getUniformName() {
+    return uniformName;
 }

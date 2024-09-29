@@ -53,6 +53,8 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 
 [Shapes](#shapes)
 
+[Object](#object)
+
 ---
 
 ### Scenes
@@ -198,7 +200,7 @@ Texture texture;
 texture.load("Textures/texture.png", Shader* shader = nullptr, std::string uniformName); // the shader and uniform name are optional if you want to use only one texture in the object but are recommended to use
 
 // In the render method of the scene before drawing the object
-texture.bind();
+texture.bind(int textureUnit = 0); // The texture unit is optional and is used to bind the texture to a specific texture unit
 ```
 
 You may also unbind and clean the texture after rendering the object:
@@ -214,6 +216,12 @@ To get the texture ID:
 
 ```cpp
 GLuint textureID = texture.getID();
+```
+
+To get the texture uniform name:
+
+```cpp
+const char* uniformName = texture.getUniformName();
 ```
 
 ---

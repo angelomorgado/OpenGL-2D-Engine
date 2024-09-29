@@ -8,8 +8,7 @@ void Object::load(Shape shape, Shader shader, std::vector<Texture> textures, glm
     this->rotation = rotation;
     this->scale = scale;
 
-    // Load objects on the GPU
-    // 1: Triangle
+    // Load object to the GPU
     // Generate and bind Vertex Array Object (VAO)
     glGenVertexArrays(1, &VAO);  // Generate VAO
     glBindVertexArray(VAO);      // Bind VAO
@@ -38,13 +37,19 @@ void Object::load(Shape shape, Shader shader, std::vector<Texture> textures, glm
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     updateTransform();
+
+    // Set the texture units
+    shader.use();
+    for (unsigned int i = 0; i < textures.size(); i++) {
+        shader.setInt(textures[i].getUniformName(), i);
+    }
 }
 
 void Object::render() {
     shader.use();
     shader.setMat4("transform", transform);
     for (unsigned int i = 0; i < textures.size(); i++) {
-        textures[i].bind();
+        textures[i].bind(i);
     }
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, shape.numberOfVertices, GL_UNSIGNED_INT, 0);
