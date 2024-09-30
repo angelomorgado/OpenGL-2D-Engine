@@ -1,6 +1,6 @@
 #include <Object.hpp>
 
-void Object::load(Shape shape, Shader shader, std::vector<Texture> textures, glm::vec3 position, float rotation, glm::vec3 scale) {
+void Object::load(Shape shape, Shader shader, std::vector<Texture> textures, glm::vec2 position, float rotation, glm::vec2 scale) {
     this->shape = shape;
     this->textures = textures;
     this->shader = shader;
@@ -64,13 +64,17 @@ void Object::clean() {
 
 void Object::updateTransform() {
     transform = glm::mat4(1.0f);
-    transform = glm::translate(transform, position);
-    transform = glm::rotate(transform, glm::radians(rotation), glm::vec3(0.0, 0.0, 1.0));
-    transform = glm::scale(transform, scale);
+    // Translate (convert vec2 to vec3 by adding z = 0)
+    transform = glm::translate(transform, glm::vec3(position, 0.0f));
+    // Rotate around z-axis (2D rotation)
+    transform = glm::rotate(transform, glm::radians(rotation), glm::vec3(0.0f, 0.0f, 1.0f));
+    // Scale (convert vec2 to vec3 by adding z = 1)
+    transform = glm::scale(transform, glm::vec3(scale, 1.0f));
 }
 
+
 // Getters and Setters
-glm::vec3 Object::getPosition() {
+glm::vec2 Object::getPosition() {
     return position;
 }
 
@@ -78,7 +82,7 @@ float Object::getRotation() {
     return rotation;
 }
 
-glm::vec3 Object::getScale() {
+glm::vec2 Object::getScale() {
     return scale;
 }
 
@@ -86,8 +90,13 @@ glm::mat4 Object::getTransform() {
     return transform;
 }
 
-void Object::setPosition(glm::vec3 position) {
+void Object::setPosition(glm::vec2 position) {
     this->position = position;
+    updateTransform();
+}
+
+void Object::move(glm::vec2 position) {
+    this->position += position;
     updateTransform();
 }
 
@@ -96,7 +105,7 @@ void Object::setRotation(float rotation) {
     updateTransform();
 }
 
-void Object::setScale(glm::vec3 scale) {
+void Object::setScale(glm::vec2 scale) {
     this->scale = scale;
     updateTransform();
 }

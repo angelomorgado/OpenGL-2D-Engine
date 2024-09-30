@@ -19,20 +19,20 @@ StandardTextureScene::StandardTextureScene() {
 
 void StandardTextureScene::load() {
     // Shapes
-    squareShape.createSquare();
-    triangleShape.createTriangle();
+    shape1.createSquare();
+    shape2.createCircle();
 
     // Load shaders
     textureShader.load("Shaders/standardTexture.vert", "Shaders/standardTexture.frag");
-    standardShader.load("standard");
+    standardShader.load("standardTexture");
 
     // Load textures
-    texture1.load("Media/Textures/container.jpg", &standardShader, "texture1");
-    texture2.load("Media/Textures/awesomeface.png", &standardShader, "texture2");
+    texture1.load("Media/Textures/container.jpg", "texture1");
+    texture2.load("Media/Textures/awesomeface.png", "texture2");
 
     // Load objects
-    triangle.load(triangleShape, standardShader);
-    square.load(squareShape, textureShader, {texture1, texture2}, glm::vec3(0.0f, 0.0f, 0.0f), 0.0f, glm::vec3(0.5f));
+    circle.load(shape2, textureShader, {texture2}, glm::vec3(0.0f, 0.0f, 0.0f), 0.0f, glm::vec3(0.5f));
+    square.load(shape1, textureShader, {texture1, texture2}, glm::vec3(0.0f, 0.0f, 0.0f), 0.0f, glm::vec3(0.3f));
 }
 
 // ==================================================== Main Loop ====================================================
@@ -57,14 +57,14 @@ void StandardTextureScene::render() {
 
     // The order in wich the objects are rendered is important
     square.render();
-    triangle.render();
+    circle.render();
 }
 
 // =======================================================================================================
 
 int StandardTextureScene::clean() {
     square.clean();
-    triangle.clean();
+    circle.clean();
     texture1.clean();
     texture2.clean();
     standardShader.clean();

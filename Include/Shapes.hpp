@@ -19,6 +19,7 @@ public:
     std::vector<float> vertices;
     std::vector<unsigned int> indices;
     int numberOfVertices;
+    float radius, size;
 
 };
 

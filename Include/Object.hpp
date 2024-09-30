@@ -19,29 +19,30 @@
 
 class Object {
     public:
-        void load(Shape shape, Shader shader, std::vector<Texture> textures = {}, glm::vec3 position = glm::vec3(0.0f), float rotation = 0.0f, glm::vec3 scale = glm::vec3(0.0f));
+        void load(Shape shape, Shader shader, std::vector<Texture> textures = {}, glm::vec2 position = glm::vec2(0.0f), float rotation = 0.0f, glm::vec2 scale = glm::vec2(0.0f));
         void render();
         void clean();
+        void move(glm::vec2 position);
 
         // Getters
-        glm::vec3 getPosition();
+        glm::vec2 getPosition();
         float getRotation();
-        glm::vec3 getScale();
+        glm::vec2 getScale();
         glm::mat4 getTransform();
 
         // Setters
-        void setPosition(glm::vec3 position);
+        void setPosition(glm::vec2 position);
         void setRotation(float rotation);
-        void setScale(glm::vec3 scale);
+        void setScale(glm::vec2 scale);
         void setTransform(glm::mat4 transform);
     private:
         // Private attributes
         Shape shape;
         std::vector<Texture> textures;
         Shader shader;
-        glm::vec3 position;
+        glm::vec2 position;
         float rotation;
-        glm::vec3 scale;
+        glm::vec2 scale;
         glm::mat4 transform;
 
         unsigned int VBO, VAO, EBO;

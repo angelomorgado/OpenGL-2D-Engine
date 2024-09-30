@@ -19,6 +19,7 @@ void Shape::createSquare() {
     };
 
     numberOfVertices = 6;  
+    size = 1.0f;
 }
 
 void Shape::createTriangle() {
@@ -34,6 +35,7 @@ void Shape::createTriangle() {
     };
 
     numberOfVertices = 3; 
+    size = 1.0f;
 }
 
 void Shape::createCircle(int segments) {
@@ -54,4 +56,6 @@ void Shape::createCircle(int segments) {
     }
 
     numberOfVertices = segments * 3 + 1;
+    size   = 1.0f;
+    radius = 0.5f;
 }

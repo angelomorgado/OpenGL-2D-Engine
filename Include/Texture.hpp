@@ -8,11 +8,9 @@
 #include <iostream>
 #include <string>
 
-#include <Shader.hpp>
-
 class Texture {
 public:
-    void load(const char* path, Shader* shader = nullptr, std::string uniformName = "texture1");
+    void load(const char* path, std::string uniformName = "texture1");
     void bind(int textureUnit = 0);
     void unbind();
     void clean();

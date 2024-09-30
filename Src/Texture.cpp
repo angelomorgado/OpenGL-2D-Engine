@@ -2,7 +2,7 @@
 
 #include <Texture.hpp>
 
-void Texture::load(const char* path, Shader* shader, std::string uniformName) {
+void Texture::load(const char* path, std::string uniformName) {
     this->path = path;
     this->uniformName = uniformName.c_str();
 

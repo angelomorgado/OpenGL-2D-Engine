@@ -4,6 +4,7 @@
 #include <SceneManager.hpp>
 #include <Scenes/StandardScene.hpp>
 #include <Scenes/StandardTextureScene.hpp>
+#include <Scenes/CollisionsScene.hpp>
 
 int main() {
     SceneManager& sceneManager = SceneManager::getInstance();
@@ -11,7 +12,7 @@ int main() {
     // Register scenes
     sceneManager.registerScene("StandardScene", []() { return std::make_shared<StandardScene>(); });
     sceneManager.registerScene("StandardTextureScene", []() { return std::make_shared<StandardTextureScene>(); });
-    // sceneManager.registerScene("GameScene", []() { return std::make_shared<GameScene>(); });
+    sceneManager.registerScene("CollisionsScene", []() { return std::make_shared<CollisionsScene>(); });
 
     // Load a scene by name
     INIReader reader("Config.ini");

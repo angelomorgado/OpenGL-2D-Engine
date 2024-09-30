@@ -30,12 +30,12 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 - [x] Shader support
 - [x] Makefile support for Linux
 - [x] Texture support
-- [ ] 2D Object import/file from file/image
-- [ ] Sprite support
-- [ ] Collision detection
+- [ ] AABB/Circle Collision detection
 - [ ] Text rendering
 - [ ] Audio support
 - [ ] Physics support
+- [ ] 2D Object import/file from file/image
+- [ ] Sprite support
 - [ ] Tilemap support
 
 ---
@@ -269,6 +269,15 @@ glBindVertexArray(0);
 glBindBuffer(GL_ARRAY_BUFFER, 0);
 ```
 
+Shapes have attributes that can be accessed to retrieve information about the shape:
+
+```cpp
+numberOfVertices = shape.numberOfVertices;
+vertices = shape.vertices;
+indices = shape.indices;
+size = shape.size;
+radius = shape.radius; // Only for the circle shape
+```
 ---
 
 ### Object
@@ -292,21 +301,23 @@ object.clean();
 This class has more methods that aim to facilitate its use:
 
 ```cpp
-void load(Shape shape, Shader shader, std::vector<Texture> textures = {}, glm::vec3 position = glm::vec3(0.0f), float rotation = 0.0f, glm::vec3 scale = glm::vec3(0.0f)) // Loads the object to the GPU
+void load(Shape shape, Shader shader, std::vector<Texture> textures = {}, glm::vec2 position = glm::vec2(0.0f), float rotation = 0.0f, glm::vec2 scale = glm::vec2(0.0f)) // Loads the object to the GPU
 
 void render() // Renders the object
 
 void clean() // Cleans the object from the GPU
 
+void move(glm::vec3 direction) // Moves the object in a direction (instead of setting the position)
+
 // Getters
-glm::vec3 getPosition()
+glm::vec2 getPosition()
 float getRotation()
-glm::vec3 getScale()
+glm::vec2 getScale()
 glm::mat4 getTransform()
 
 // Setters
-void setPosition(glm::vec3 position)
+void setPosition(glm::vec2 position)
 void setRotation(float rotation)
-void setScale(glm::vec3 scale)
+void setScale(glm::vec2 scale)
 void setTransform(glm::mat4 transform) // Sets the transformation matrix if you want to set it outside the class
 ```
