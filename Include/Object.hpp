@@ -23,18 +23,22 @@ class Object {
         void render();
         void clean();
         void move(glm::vec2 position);
+        bool isColliding(Object& obj);
 
         // Getters
         glm::vec2 getPosition();
         float getRotation();
         glm::vec2 getScale();
         glm::mat4 getTransform();
+        Shape getShape();
+        glm::vec2 getSize();
 
         // Setters
         void setPosition(glm::vec2 position);
         void setRotation(float rotation);
         void setScale(glm::vec2 scale);
         void setTransform(glm::mat4 transform);
+        void setColor(glm::vec3 color);
     private:
         // Private attributes
         Shape shape;

@@ -62,6 +62,22 @@ void Object::clean() {
     glDeleteBuffers(1, &EBO);
 }
 
+bool Object::isColliding(Object& obj) {
+    glm::vec2 obj1Position = position;
+    glm::vec2 obj1Size = getSize();
+    glm::vec2 obj2Position = obj.getPosition();
+    glm::vec2 obj2Size = obj.getSize();
+
+    // collision x-axis?
+    bool collisionX = obj1Position.x + obj1Size.x >= obj2Position.x &&
+        obj2Position.x + obj2Size.x >= obj1Position.x;
+    // collision y-axis?
+    bool collisionY = obj1Position.y + obj1Size.y >= obj2Position.y &&
+        obj2Position.y + obj2Size.y >= obj1Position.y;
+    // collision only if on both axes
+    return collisionX && collisionY;
+}
+
 void Object::updateTransform() {
     transform = glm::mat4(1.0f);
     // Translate (convert vec2 to vec3 by adding z = 0)
@@ -71,7 +87,6 @@ void Object::updateTransform() {
     // Scale (convert vec2 to vec3 by adding z = 1)
     transform = glm::scale(transform, glm::vec3(scale, 1.0f));
 }
-
 
 // Getters and Setters
 glm::vec2 Object::getPosition() {
@@ -86,8 +101,16 @@ glm::vec2 Object::getScale() {
     return scale;
 }
 
+glm::vec2 Object::getSize() {
+    return scale * shape.size;
+}
+
 glm::mat4 Object::getTransform() {
     return transform;
+}
+
+Shape Object::getShape() {
+    return shape;
 }
 
 void Object::setPosition(glm::vec2 position) {
@@ -112,4 +135,15 @@ void Object::setScale(glm::vec2 scale) {
 
 void Object::setTransform(glm::mat4 transform) {
     this->transform = transform;
+}
+
+void Object::setColor(glm::vec3 color) {
+    for (unsigned int i = 0; i < shape.vertices.size(); i += 8) {
+        shape.vertices[i + 3] = color.r;
+        shape.vertices[i + 4] = color.g;
+        shape.vertices[i + 5] = color.b;
+    }
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, shape.vertices.size() * sizeof(float), shape.vertices.data(), GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

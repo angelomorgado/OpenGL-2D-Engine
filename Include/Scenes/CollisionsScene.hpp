@@ -42,10 +42,14 @@ private:
     Texture texture2;
     float offset;
     Object square, circle;
+    float speed;
+    glm::vec2 direction;
 
     void processInput();
     bool checkAABBCollision(Object& obj1, Object& obj2);
     bool checkCircleCollision(Object& obj1, Object& obj2);
+    void borderCollision(Object& obj);
+    void isInside(Object& obj1, Object& obj2);
 };
 
 #endif

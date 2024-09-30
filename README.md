@@ -41,6 +41,8 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 ---
 ## Documentation
 
+[Window](#window)
+
 [Scenes](#scenes)
 
 [Callbacks](#callbacks)
@@ -57,6 +59,17 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 
 ---
 
+### Window
+
+The window is where everything is rendered. It is created in the Setup.cpp file. The following code is used to create the window:
+
+```cpp
+GLFWwindow* window = Setup::complete_setup(title, screen_width, screen_height, fullscreen, resizable);
+```
+
+The window has the dimensions of [-1.0, 1.0] vertically (where 1.0 is the top and vice-versa) and [-1.0, 1.0] horizontally (where 1.0 is the right side and vice-versa). The origin is at the center of the window.
+
+```cpp
 ### Scenes
 
 Scenes are a vital part of this template. They are used to separate different parts of the game, such as the main menu, the game itself, and the credits. Each scene must inherit from the Scene class and implement the following methods:
@@ -309,10 +322,13 @@ void clean() // Cleans the object from the GPU
 
 void move(glm::vec3 direction) // Moves the object in a direction (instead of setting the position)
 
+bool isColliding(Object object) // Checks if the object is colliding with another object
+
 // Getters
 glm::vec2 getPosition()
 float getRotation()
 glm::vec2 getScale()
+glm::vec2 getSize() // Returns the size of the object (Scale * Shape.size)
 glm::mat4 getTransform()
 
 // Setters
@@ -320,4 +336,5 @@ void setPosition(glm::vec2 position)
 void setRotation(float rotation)
 void setScale(glm::vec2 scale)
 void setTransform(glm::mat4 transform) // Sets the transformation matrix if you want to set it outside the class
+void setColor(glm::vec3 color)
 ```

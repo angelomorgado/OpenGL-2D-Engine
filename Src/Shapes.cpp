@@ -7,10 +7,10 @@
 void Shape::createSquare() {
     vertices = {
         // Positions          // Colors        // Texture Coords
-        0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f, // Top Right
-        0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f, // Bottom Right
-        -0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f, // Bottom Left
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f  // Top Left
+        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f, // Top Left
+        0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 1.0f,   1.0f, 1.0f, // Top Right
+        0.5f, -0.5f, 0.0f,    1.0f, 1.0f, 1.0f,   1.0f, 0.0f, // Bottom Right
+        -0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f  // Bottom Left
     };
 
     indices = {
@@ -19,8 +19,9 @@ void Shape::createSquare() {
     };
 
     numberOfVertices = 6;  
-    size = 1.0f;
+    size = glm::vec2(1.0f);
 }
+
 
 void Shape::createTriangle() {
     vertices = {
@@ -35,7 +36,7 @@ void Shape::createTriangle() {
     };
 
     numberOfVertices = 3; 
-    size = 1.0f;
+    size = glm::vec2(1.0f);
 }
 
 void Shape::createCircle(int segments) {
@@ -56,6 +57,6 @@ void Shape::createCircle(int segments) {
     }
 
     numberOfVertices = segments * 3 + 1;
-    size   = 1.0f;
+    size   = glm::vec2(1.0f);
     radius = 0.5f;
 }

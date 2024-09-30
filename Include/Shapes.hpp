@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <glad/glad.h>
+#include <glm/glm.hpp>
 #include <cmath>
 
 class Shape {
@@ -19,8 +20,8 @@ public:
     std::vector<float> vertices;
     std::vector<unsigned int> indices;
     int numberOfVertices;
-    float radius, size;
-
+    float radius;
+    glm::vec2 size;
 };
 
 #endif
