@@ -21,6 +21,8 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 
 - StandardTextureScene: A scene that shows a rectangle with a texture moving.
 
+- CollisionsScene: A scene that shows a square that's movable with the wasd keys and a circle inside the square that can't leave the square.
+
 ### Features
 
 - [x] 2D rendering
@@ -30,9 +32,12 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 - [x] Shader support
 - [x] Makefile support for Linux
 - [x] Texture support
-- [ ] AABB/Circle Collision detection
+- [x] AABB Collision detection
+- [x] Window Border Collision detection
+- [ ] Circle Collision detection
 - [ ] Text rendering
 - [ ] Audio support
+- [ ] VFX support
 - [ ] Physics support
 - [ ] 2D Object import/file from file/image
 - [ ] Sprite support

@@ -46,7 +46,7 @@ void CollisionsScene::update() {
 
     // Move the square with sine
     offset = sin(glfwGetTime()) / 3.0f;
-    square.setPosition(glm::vec2(0.0, offset));
+    // square.setPosition(glm::vec2(0.0, offset));
 
     if (circle.isColliding(square)) {
         square.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
@@ -191,13 +191,13 @@ void CollisionsScene::processInput()
         glfwSetWindowShouldClose(window, true);
 
     if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        square.move(glm::vec2(0.0f, speed));
+        square.move(glm::vec2(0.0f, speed/2.0f));
     if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        square.move(glm::vec2(0.0f, -speed));
+        square.move(glm::vec2(0.0f, -speed/2.0f));
     if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        square.move(glm::vec2(-speed, 0.0f));
+        square.move(glm::vec2(-speed/2.0f, 0.0f));
     if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        square.move(glm::vec2(speed, 0.0f));
+        square.move(glm::vec2(speed/2.0f, 0.0f));
 }
 
 GLFWwindow* CollisionsScene::getWindow() {
