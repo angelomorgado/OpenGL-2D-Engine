@@ -47,9 +47,8 @@ void CollisionsScene::update() {
     // Move the square with sine
     offset = sin(glfwGetTime()) / 3.0f;
     square.setPosition(glm::vec2(offset));
-    circle.setPosition(glm::vec2(-offset));
 
-    if (checkCircleCollision(circle, square)) {
+    if (Collisions::checkCircleCollision(circle, square)) {
         square.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
         circle.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
     } else {
@@ -57,7 +56,7 @@ void CollisionsScene::update() {
         circle.setColor(glm::vec3(1.0f));
     }
 
-    // borderCollision(circle);
+    borderCollision(circle);
     circle.move(direction * speed);
 
     // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
@@ -77,51 +76,32 @@ void CollisionsScene::render() {
 
 
 // ==================================================== Collision Detection ====================================================
-bool CollisionsScene::checkCircleCollision(Object& circle, Object& square) {
-    // Get center point of circle
-    glm::vec2 circle_center = circle.getPosition();
-
-    // Calculate AABB info (center, half-extents)
-    glm::vec2 aabb_half_extents = square.getSize() / 2.0f;
-    glm::vec2 aabb_center = square.getPosition();
-
-    // Get difference vector between both centers
-    glm::vec2 difference = circle_center - aabb_center;
-    glm::vec2 clamped = glm::clamp(difference, -aabb_half_extents, aabb_half_extents);
-
-    // Add clamped value to AABB_center and we get the value of box closest to circle
-    glm::vec2 closest = aabb_center + clamped;
-
-    // Retrieve vector between center circle and closest point AABB and check if length <= radius
-    difference = closest - circle_center;
-
-    return glm::length(difference) < circle.getSize().x / 2.0f;
-}
 
 // Check if the object is colliding with the borders of the window
 void CollisionsScene::borderCollision(Object& obj) {
-    glm::vec2 objSize     = obj.getSize();
-    glm::vec2 objPosition = obj.getPosition();
+    switch (Collisions::checkWindowCollision(obj)) {
+        // Top, Bottom
+        case 2:
+        case 3:
+            direction.y = -direction.y;
+            break;
 
-    // Y axis
-    // Top
-    if(objPosition.y + objSize.y/2.0f >= 1.0f) {
-        direction.y = -direction.y;
-        std::cout << "Top" << std::endl;
-    // Bottom
-    } else if(objPosition.y - objSize.y/2.0f <= -1.0f) {
-        direction.y = -direction.y;
-        std::cout << "Bottom" << std::endl;
-    
-    // X axis
-    // Left
-    } if(objPosition.x - objSize.x/2.0f <= -1.0f) {
-        direction.x = -direction.x;
-        std::cout << "Left" << std::endl;
-    // Right
-    } else if(objPosition.x + objSize.x/2.0f >= 1.0f) {
-        direction.x = -direction.x;
-        std::cout << "Right" << std::endl;
+        // Left, Right
+        case 4:
+        case 5:
+            direction.x = -direction.x;
+            break;
+
+        // Corners
+        case 6:
+        case 7:
+        case 8:
+            direction.x = -direction.x;
+            direction.y = -direction.y;
+            break;
+
+        default:
+            break;
     }
 }
 // =======================================================================================================

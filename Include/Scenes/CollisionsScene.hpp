@@ -13,6 +13,7 @@
 #include <Texture.hpp>
 #include <Shapes.hpp>
 #include <Object.hpp>
+#include <Collisions.hpp>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -46,8 +47,6 @@ private:
     glm::vec2 direction;
 
     void processInput();
-    bool checkAABBCollision(Object& obj1, Object& obj2);
-    bool checkCircleCollision(Object& circle, Object& square);
     void borderCollision(Object& obj);
 };
 

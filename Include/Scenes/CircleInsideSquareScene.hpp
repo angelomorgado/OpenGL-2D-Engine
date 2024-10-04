@@ -13,6 +13,7 @@
 #include <Texture.hpp>
 #include <Shapes.hpp>
 #include <Object.hpp>
+#include <Collisions.hpp>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -40,15 +41,11 @@ private:
     Shader standardShader, textureShader;
     Texture texture1;
     Texture texture2;
-    float offset;
     Object square, circle;
     float speed;
     glm::vec2 direction;
 
     void processInput();
-    bool checkAABBCollision(Object& obj1, Object& obj2);
-    bool checkCircleCollision(Object& circle, Object& square);
-    void borderCollision(Object& obj);
     void isInside(Object& obj1, Object& obj2);
 };
 

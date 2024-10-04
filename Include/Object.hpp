@@ -23,7 +23,6 @@ class Object {
         void render();
         void clean();
         void move(glm::vec2 position);
-        bool isColliding(Object& obj);
 
         // Getters
         glm::vec2 getPosition();

@@ -64,6 +64,8 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 
 [Object](#object)
 
+[Collisions](#collisions)
+
 ---
 
 ### Window
@@ -344,4 +346,19 @@ void setRotation(float rotation)
 void setScale(glm::vec2 scale)
 void setTransform(glm::mat4 transform) // Sets the transformation matrix if you want to set it outside the class
 void setColor(glm::vec3 color)
+```
+
+---
+
+### Collisions
+
+This engine has a namespace that can detect collisions between objects. The following methods are available:
+
+```cpp
+bool checkAABBCollision(Object& obj1, Object& obj2) // Does AABB collision detection and returns true if obj1 is colliding with obj2
+
+bool checkCircleCollision(Object& circle, Object& obj) // Does Circle collision detection and returns true if circle is colliding with obj
+
+unsigned int  checkWindowCollision(Object& obj) // Checks if the object is colliding with the window and returns the border that is colliding with the object (0 = No collision, 2 = top, 3 = right, 4 = bottom, 5 = left, 6+:Corner)
+
 ```

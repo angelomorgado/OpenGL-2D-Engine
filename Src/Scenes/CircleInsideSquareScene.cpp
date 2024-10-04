@@ -31,7 +31,7 @@ void CircleInsideSquareScene::load() {
     texture2.load("Media/Textures/awesomeface.png", "texture2");
 
     // Load objects
-    circle.load(shape2, textureShader, {texture2}, glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.1f));
+    circle.load(shape2, textureShader, {texture2}, glm::vec2(0.0f, 0.05f), 0.0f, glm::vec2(0.1f));
     square.load(shape1, textureShader, {texture1, texture2}, glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.5f));
 
     // Set the speed and direction
@@ -44,7 +44,6 @@ void CircleInsideSquareScene::update() {
     // input
     processInput();
 
-    // borderCollision(circle);
     isInside(circle, square);
     circle.move(direction * speed);
 
@@ -64,55 +63,7 @@ void CircleInsideSquareScene::render() {
 }
 
 // ==================================================== Collision Detection ====================================================
-bool CircleInsideSquareScene::checkCircleCollision(Object& circle, Object& square) {
-    // Get center point of circle
-    glm::vec2 circle_center = circle.getPosition();
-
-    // Calculate AABB info (center, half-extents)
-    glm::vec2 aabb_half_extents = square.getSize() / 2.0f;
-    glm::vec2 aabb_center = square.getPosition();
-
-    // Get difference vector between both centers
-    glm::vec2 difference = circle_center - aabb_center;
-    glm::vec2 clamped = glm::clamp(difference, -aabb_half_extents, aabb_half_extents);
-
-    // Add clamped value to AABB_center and we get the value of box closest to circle
-    glm::vec2 closest = aabb_center + clamped;
-
-    // Retrieve vector between center circle and closest point AABB and check if length <= radius
-    difference = closest - circle_center;
-
-    return glm::length(difference) < circle.getSize().x;
-}
-
-// Check if the object is colliding with the borders of the window
-void CircleInsideSquareScene::borderCollision(Object& obj) {
-    glm::vec2 objSize     = obj.getSize();
-    glm::vec2 objPosition = obj.getPosition();
-
-    // Y axis
-    // Top
-    if(objPosition.y + objSize.y/2.0f >= 1.0f) {
-        direction.y = -direction.y;
-        std::cout << "Top" << std::endl;
-    // Bottom
-    } else if(objPosition.y - objSize.y/2.0f <= -1.0f) {
-        direction.y = -direction.y;
-        std::cout << "Bottom" << std::endl;
-    
-    // X axis
-    // Left
-    } if(objPosition.x - objSize.x/2.0f <= -1.0f) {
-        direction.x = -direction.x;
-        std::cout << "Left" << std::endl;
-    // Right
-    } else if(objPosition.x + objSize.x/2.0f >= 1.0f) {
-        direction.x = -direction.x;
-        std::cout << "Right" << std::endl;
-    }
-}
-
-// Checks if obj1 is inside obj2
+// Keep obj1 inside obj2
 void CircleInsideSquareScene::isInside(Object& obj1, Object& obj2) {
     glm::vec2 obj1Size     = obj1.getSize();
     glm::vec2 obj1Position = obj1.getPosition();
@@ -120,36 +71,39 @@ void CircleInsideSquareScene::isInside(Object& obj1, Object& obj2) {
     glm::vec2 obj2Size     = obj2.getSize();
     glm::vec2 obj2Position = obj2.getPosition();
 
-    // Calculate half sizes for easier boundary checking
     glm::vec2 obj1HalfSize = obj1Size / 2.0f;
     glm::vec2 obj2HalfSize = obj2Size / 2.0f;
 
-    // Check for Y-axis boundaries
-    // Top
-    if (obj1Position.y + obj1HalfSize.y > obj2Position.y + obj2HalfSize.y) {
-        obj1Position.y = obj2Position.y + obj2HalfSize.y - obj1HalfSize.y - 0.01f;  // Push obj1 back inside
-        direction.y = -direction.y;
-        std::cout << "Hit Top Boundary" << std::endl;
-    }
-    // Bottom
-    if (obj1Position.y - obj1HalfSize.y < obj2Position.y - obj2HalfSize.y) {
-        obj1Position.y = obj2Position.y - obj2HalfSize.y + obj1HalfSize.y + 0.01f;  // Push obj1 back inside
-        direction.y = -direction.y;
-        std::cout << "Hit Bottom Boundary" << std::endl;
-    }
+    switch (Collisions::detectBoundaryOverlap(obj1, obj2)) {
+        // Top
+        case 2:
+            obj1Position.y = obj2Position.y + obj2HalfSize.y - obj1HalfSize.y - 0.01f;  // Push obj1 back inside
+            direction.y = -direction.y;
+            break;
+        // Bottom
+        case 3:
+            obj1Position.y = obj2Position.y - obj2HalfSize.y + obj1HalfSize.y + 0.01f;  // Push obj1 back inside
+            direction.y = -direction.y;
+            break;
 
-    // Check for X-axis boundaries
-    // Right
-    if (obj1Position.x + obj1HalfSize.x > obj2Position.x + obj2HalfSize.x) {
-        obj1Position.x = obj2Position.x + obj2HalfSize.x - obj1HalfSize.x - 0.01f;  // Push obj1 back inside
-        direction.x = -direction.x;
-        std::cout << "Hit Right Boundary" << std::endl;
-    }
-    // Left
-    if (obj1Position.x - obj1HalfSize.x < obj2Position.x - obj2HalfSize.x) {
-        obj1Position.x = obj2Position.x - obj2HalfSize.x + obj1HalfSize.x + 0.01f;  // Push obj1 back inside
-        direction.x = -direction.x;
-        std::cout << "Hit Left Boundary" << std::endl;
+        // Left
+        case 4:
+            obj1Position.x = obj2Position.x + obj2HalfSize.x - obj1HalfSize.x - 0.01f;  // Push obj1 back inside
+            direction.x = -direction.x;
+            break;
+        // Right
+        case 5:
+            obj1Position.x = obj2Position.x - obj2HalfSize.x + obj1HalfSize.x + 0.01f;  // Push obj1 back inside
+            direction.x = -direction.x;
+            break;
+        case 6:
+        case 7:
+        case 8:
+            direction.x = -direction.x;
+            direction.y = -direction.y;
+            break;
+        default:
+            break;
     }
 
     // Update obj1's position after handling the collisions
@@ -157,7 +111,6 @@ void CircleInsideSquareScene::isInside(Object& obj1, Object& obj2) {
 }
 
 // =======================================================================================================
-
 int CircleInsideSquareScene::clean() {
     square.clean();
     circle.clean();

@@ -62,22 +62,6 @@ void Object::clean() {
     glDeleteBuffers(1, &EBO);
 }
 
-bool Object::isColliding(Object& obj) {
-    glm::vec2 obj1Position = position;
-    glm::vec2 obj1Size = getSize();
-    glm::vec2 obj2Position = obj.getPosition();
-    glm::vec2 obj2Size = obj.getSize();
-
-    // collision x-axis?
-    bool collisionX = obj1Position.x + obj1Size.x >= obj2Position.x &&
-        obj2Position.x + obj2Size.x >= obj1Position.x;
-    // collision y-axis?
-    bool collisionY = obj1Position.y + obj1Size.y >= obj2Position.y &&
-        obj2Position.y + obj2Size.y >= obj1Position.y;
-    // collision only if on both axes
-    return collisionX && collisionY;
-}
-
 void Object::updateTransform() {
     transform = glm::mat4(1.0f);
     // Translate (convert vec2 to vec3 by adding z = 0)
