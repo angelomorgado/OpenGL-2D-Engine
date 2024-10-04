@@ -31,8 +31,8 @@ void CollisionsScene::load() {
     texture2.load("Media/Textures/awesomeface.png", "texture2");
 
     // Load objects
-    circle.load(shape2, textureShader, {texture2}, glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.1f));
-    square.load(shape1, textureShader, {texture1, texture2}, glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.5f));
+    circle.load(shape2, textureShader, {texture2}, glm::vec2(-0.3f, 0.0f), 0.0f, glm::vec2(0.3f));
+    square.load(shape1, textureShader, {texture1, texture2}, glm::vec2(0.3f, 0.0f), 0.0f, glm::vec2(0.3f));
 
     // Set the speed and direction
     speed = 0.002f;
@@ -46,9 +46,10 @@ void CollisionsScene::update() {
 
     // Move the square with sine
     offset = sin(glfwGetTime()) / 3.0f;
-    // square.setPosition(glm::vec2(0.0, offset));
+    square.setPosition(glm::vec2(offset));
+    circle.setPosition(glm::vec2(-offset));
 
-    if (circle.isColliding(square)) {
+    if (checkCircleCollision(circle, square)) {
         square.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
         circle.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
     } else {
@@ -57,7 +58,6 @@ void CollisionsScene::update() {
     }
 
     // borderCollision(circle);
-    isInside(circle, square);
     circle.move(direction * speed);
 
     // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
@@ -95,7 +95,7 @@ bool CollisionsScene::checkCircleCollision(Object& circle, Object& square) {
     // Retrieve vector between center circle and closest point AABB and check if length <= radius
     difference = closest - circle_center;
 
-    return glm::length(difference) < circle.getSize().x;
+    return glm::length(difference) < circle.getSize().x / 2.0f;
 }
 
 // Check if the object is colliding with the borders of the window
@@ -124,53 +124,6 @@ void CollisionsScene::borderCollision(Object& obj) {
         std::cout << "Right" << std::endl;
     }
 }
-
-// Checks if obj1 is inside obj2
-void CollisionsScene::isInside(Object& obj1, Object& obj2) {
-    glm::vec2 obj1Size     = obj1.getSize();
-    glm::vec2 obj1Position = obj1.getPosition();
-    
-    glm::vec2 obj2Size     = obj2.getSize();
-    glm::vec2 obj2Position = obj2.getPosition();
-
-    // Calculate half sizes for easier boundary checking
-    glm::vec2 obj1HalfSize = obj1Size / 2.0f;
-    glm::vec2 obj2HalfSize = obj2Size / 2.0f;
-
-    // Check for Y-axis boundaries
-    // Top
-    if (obj1Position.y + obj1HalfSize.y > obj2Position.y + obj2HalfSize.y) {
-        obj1Position.y = obj2Position.y + obj2HalfSize.y - obj1HalfSize.y - 0.01f;  // Push obj1 back inside
-        direction.y = -direction.y;
-        std::cout << "Hit Top Boundary" << std::endl;
-    }
-    // Bottom
-    if (obj1Position.y - obj1HalfSize.y < obj2Position.y - obj2HalfSize.y) {
-        obj1Position.y = obj2Position.y - obj2HalfSize.y + obj1HalfSize.y + 0.01f;  // Push obj1 back inside
-        direction.y = -direction.y;
-        std::cout << "Hit Bottom Boundary" << std::endl;
-    }
-
-    // Check for X-axis boundaries
-    // Right
-    if (obj1Position.x + obj1HalfSize.x > obj2Position.x + obj2HalfSize.x) {
-        obj1Position.x = obj2Position.x + obj2HalfSize.x - obj1HalfSize.x - 0.01f;  // Push obj1 back inside
-        direction.x = -direction.x;
-        std::cout << "Hit Right Boundary" << std::endl;
-    }
-    // Left
-    if (obj1Position.x - obj1HalfSize.x < obj2Position.x - obj2HalfSize.x) {
-        obj1Position.x = obj2Position.x - obj2HalfSize.x + obj1HalfSize.x + 0.01f;  // Push obj1 back inside
-        direction.x = -direction.x;
-        std::cout << "Hit Left Boundary" << std::endl;
-    }
-
-    // Update obj1's position after handling the collisions
-    obj1.setPosition(obj1Position);
-}
-
-
-
 // =======================================================================================================
 
 int CollisionsScene::clean() {
@@ -189,15 +142,6 @@ void CollisionsScene::processInput()
 {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
-
-    if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        square.move(glm::vec2(0.0f, speed/2.0f));
-    if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        square.move(glm::vec2(0.0f, -speed/2.0f));
-    if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        square.move(glm::vec2(-speed/2.0f, 0.0f));
-    if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        square.move(glm::vec2(speed/2.0f, 0.0f));
 }
 
 GLFWwindow* CollisionsScene::getWindow() {

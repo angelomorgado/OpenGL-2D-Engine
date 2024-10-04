@@ -49,7 +49,6 @@ private:
     bool checkAABBCollision(Object& obj1, Object& obj2);
     bool checkCircleCollision(Object& circle, Object& square);
     void borderCollision(Object& obj);
-    void isInside(Object& obj1, Object& obj2);
 };
 
 #endif

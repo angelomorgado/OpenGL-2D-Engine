@@ -36,7 +36,7 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 - [x] Texture support
 - [x] AABB Collision detection
 - [x] Window Border Collision detection
-- [ ] Circle Collision detection
+- [x] Circle Collision detection
 - [ ] Text rendering
 - [ ] Audio support
 - [ ] VFX support
