@@ -1,11 +1,7 @@
 #ifndef TEXTURE_HPP
 #define TEXTURE_HPP
 
-#include <stb_image.h>
-
-#include <glad/glad.h>
 #include <glm/glm.hpp>
-#include <iostream>
 #include <string>
 
 class Texture {

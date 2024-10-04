@@ -1,8 +1,6 @@
 #include <Collisions.hpp>
 
 #include <glm/glm.hpp>
-#include <iostream>
-#include <vector>
 
 namespace Collisions {
     /* 

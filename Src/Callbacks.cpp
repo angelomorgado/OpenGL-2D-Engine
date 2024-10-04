@@ -14,5 +14,3 @@ void Callbacks::mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
     // std::cout << "Mouse position: " << xpos << ", " << ypos << std::endl;
 }
-
-

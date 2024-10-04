@@ -1,23 +1,12 @@
 #ifndef COLLISIONSSCENE_HPP
 #define COLLISIONSSCENE_HPP
 
-#include <array>
-#include <string>
-#include <iostream>
-
 #include <Scene.hpp>
-#include <Callbacks.hpp>
-#include <Setup.hpp>
-#include <INIReader.h>
-#include <Shader.hpp>
 #include <Texture.hpp>
 #include <Shapes.hpp>
 #include <Object.hpp>
-#include <Collisions.hpp>
-
 #include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <string>
 
 class CollisionsScene : public Scene {
 public:

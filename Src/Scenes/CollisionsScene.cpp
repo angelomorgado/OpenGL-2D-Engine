@@ -1,6 +1,14 @@
 #include <Scenes/CollisionsScene.hpp>
 #include <SceneManager.hpp>
 
+#include <iostream>
+#include <Callbacks.hpp>
+#include <Setup.hpp>
+#include <Shader.hpp>
+#include <Collisions.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 // ==================================================== Setup ====================================================
 CollisionsScene::CollisionsScene() {
     INIReader reader("Config.ini");

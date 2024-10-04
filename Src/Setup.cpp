@@ -1,5 +1,7 @@
 #include <Setup.hpp>
 
+#include <Callbacks.hpp>
+
 void Setup::glfw_setup() {
 	
 	glfwInit();

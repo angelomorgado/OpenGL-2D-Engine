@@ -2,19 +2,19 @@
 #include <memory>
 #include <INIReader.h>
 #include <SceneManager.hpp>
-#include <Scenes/StandardScene.hpp>
-#include <Scenes/StandardTextureScene.hpp>
+// #include <Scenes/StandardScene.hpp>
+// #include <Scenes/StandardTextureScene.hpp>
 #include <Scenes/CollisionsScene.hpp>
-#include <Scenes/CircleInsideSquareScene.hpp>
+// #include <Scenes/CircleInsideSquareScene.hpp>
 
 int main() {
     SceneManager& sceneManager = SceneManager::getInstance();
 
     // Register scenes
-    sceneManager.registerScene("StandardScene", []() { return std::make_shared<StandardScene>(); });
-    sceneManager.registerScene("StandardTextureScene", []() { return std::make_shared<StandardTextureScene>(); });
+    // sceneManager.registerScene("StandardScene", []() { return std::make_shared<StandardScene>(); });
+    // sceneManager.registerScene("StandardTextureScene", []() { return std::make_shared<StandardTextureScene>(); });
     sceneManager.registerScene("CollisionsScene", []() { return std::make_shared<CollisionsScene>(); });
-    sceneManager.registerScene("CircleInsideSquareScene", []() { return std::make_shared<CircleInsideSquareScene>(); });
+    // sceneManager.registerScene("CircleInsideSquareScene", []() { return std::make_shared<CircleInsideSquareScene>(); });
 
     // Load a scene by name
     INIReader reader("Config.ini");

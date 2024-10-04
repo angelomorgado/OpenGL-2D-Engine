@@ -1,6 +1,10 @@
 #include <Scenes/CircleInsideSquareScene.hpp>
 #include <SceneManager.hpp>
 
+#include <Collisions.hpp>
+#include <Callbacks.hpp>
+#include <INIReader.h>
+
 // ==================================================== Setup ====================================================
 CircleInsideSquareScene::CircleInsideSquareScene() {
     INIReader reader("Config.ini");

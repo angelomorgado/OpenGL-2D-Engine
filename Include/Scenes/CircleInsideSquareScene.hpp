@@ -6,14 +6,11 @@
 #include <iostream>
 
 #include <Scene.hpp>
-#include <Callbacks.hpp>
 #include <Setup.hpp>
-#include <INIReader.h>
 #include <Shader.hpp>
 #include <Texture.hpp>
 #include <Shapes.hpp>
 #include <Object.hpp>
-#include <Collisions.hpp>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

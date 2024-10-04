@@ -7,9 +7,7 @@
 #define SHAPES_HPP
 
 #include <vector>
-#include <glad/glad.h>
 #include <glm/glm.hpp>
-#include <cmath>
 
 class Shape {
 public:
