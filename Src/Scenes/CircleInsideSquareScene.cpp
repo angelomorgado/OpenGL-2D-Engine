@@ -1,8 +1,8 @@
-#include <Scenes/CollisionsScene.hpp>
+#include <Scenes/CircleInsideSquareScene.hpp>
 #include <SceneManager.hpp>
 
 // ==================================================== Setup ====================================================
-CollisionsScene::CollisionsScene() {
+CircleInsideSquareScene::CircleInsideSquareScene() {
     INIReader reader("Config.ini");
     title = "Collisions Scene";
     screen_width = reader.GetInteger("Window", "width", 800);
@@ -17,7 +17,7 @@ CollisionsScene::CollisionsScene() {
     glfwSetCursorPosCallback(window, Callbacks::mouse_callback);
 }
 
-void CollisionsScene::load() {
+void CircleInsideSquareScene::load() {
     // Shapes
     shape1.createSquare();
     shape2.createCircle();
@@ -40,21 +40,9 @@ void CollisionsScene::load() {
 }
 
 // ==================================================== Main Loop ====================================================
-void CollisionsScene::update() {    
+void CircleInsideSquareScene::update() {    
     // input
     processInput();
-
-    // Move the square with sine
-    offset = sin(glfwGetTime()) / 3.0f;
-    // square.setPosition(glm::vec2(0.0, offset));
-
-    if (circle.isColliding(square)) {
-        square.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
-        circle.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
-    } else {
-        square.setColor(glm::vec3(1.0f));
-        circle.setColor(glm::vec3(1.0f));
-    }
 
     // borderCollision(circle);
     isInside(circle, square);
@@ -66,7 +54,7 @@ void CollisionsScene::update() {
     glfwPollEvents();
 }
 
-void CollisionsScene::render() {
+void CircleInsideSquareScene::render() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -75,9 +63,8 @@ void CollisionsScene::render() {
     circle.render();
 }
 
-
 // ==================================================== Collision Detection ====================================================
-bool CollisionsScene::checkCircleCollision(Object& circle, Object& square) {
+bool CircleInsideSquareScene::checkCircleCollision(Object& circle, Object& square) {
     // Get center point of circle
     glm::vec2 circle_center = circle.getPosition();
 
@@ -99,7 +86,7 @@ bool CollisionsScene::checkCircleCollision(Object& circle, Object& square) {
 }
 
 // Check if the object is colliding with the borders of the window
-void CollisionsScene::borderCollision(Object& obj) {
+void CircleInsideSquareScene::borderCollision(Object& obj) {
     glm::vec2 objSize     = obj.getSize();
     glm::vec2 objPosition = obj.getPosition();
 
@@ -126,7 +113,7 @@ void CollisionsScene::borderCollision(Object& obj) {
 }
 
 // Checks if obj1 is inside obj2
-void CollisionsScene::isInside(Object& obj1, Object& obj2) {
+void CircleInsideSquareScene::isInside(Object& obj1, Object& obj2) {
     glm::vec2 obj1Size     = obj1.getSize();
     glm::vec2 obj1Position = obj1.getPosition();
     
@@ -169,11 +156,9 @@ void CollisionsScene::isInside(Object& obj1, Object& obj2) {
     obj1.setPosition(obj1Position);
 }
 
-
-
 // =======================================================================================================
 
-int CollisionsScene::clean() {
+int CircleInsideSquareScene::clean() {
     square.clean();
     circle.clean();
     texture1.clean();
@@ -185,7 +170,7 @@ int CollisionsScene::clean() {
     return 0;
 }
 
-void CollisionsScene::processInput()
+void CircleInsideSquareScene::processInput()
 {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
@@ -200,15 +185,15 @@ void CollisionsScene::processInput()
         square.move(glm::vec2(speed/2.0f, 0.0f));
 }
 
-GLFWwindow* CollisionsScene::getWindow() {
+GLFWwindow* CircleInsideSquareScene::getWindow() {
     return window;
 }
 
 // Register this scene to the scene manager
 namespace {
     bool isRegistered = []() {
-        SceneManager::getInstance().registerScene("CollisionsScene", []() -> std::shared_ptr<Scene> {
-            return std::make_shared<CollisionsScene>();
+        SceneManager::getInstance().registerScene("CircleInsideSquareScene", []() -> std::shared_ptr<Scene> {
+            return std::make_shared<CircleInsideSquareScene>();
         });
         return true;
     }();

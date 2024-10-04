@@ -1,5 +1,5 @@
-#ifndef COLLISIONSSCENE_HPP
-#define COLLISIONSSCENE_HPP
+#ifndef CIRCLEINSIDESQUARESCENE_HPP
+#define CIRCLEINSIDESQUARESCENE_HPP
 
 #include <array>
 #include <string>
@@ -18,9 +18,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-class CollisionsScene : public Scene {
+class CircleInsideSquareScene : public Scene {
 public:
-    CollisionsScene();
+    CircleInsideSquareScene();
     void load() override;
     void update() override;
     void render() override;

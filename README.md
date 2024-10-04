@@ -17,11 +17,13 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
     
 ### Scenes
 
-- StandardScene: A scene that renders a simple window with a moving triangle that changes color.
+- `StandardScene`: A scene that renders a simple window with a moving triangle that changes color.
 
-- StandardTextureScene: A scene that shows a rectangle with a texture moving.
+- `StandardTextureScene`: A scene that shows a rectangle with a texture moving.
 
-- CollisionsScene: A scene that shows a square that's movable with the wasd keys and a circle inside the square that can't leave the square.
+- `CollisionsScene`: A scene that shows objects in the screen moving and colliding with each other.
+
+- `CircleInsideSquareScene`: A scene that shows a square that's movable with the wasd keys and a circle inside the square that can't leave the square.
 
 ### Features
 
