@@ -11,13 +11,14 @@
                 "-I${workspaceFolder}/Include",
                 "-I${workspaceFolder}/Dependencies/Include",
                 "-I${workspaceFolder}/Dependencies/Include/imgui",
+                "-I${workspaceFolder}/Dependencies/Include/freetype2",
                 "-L${workspaceFolder}/Lib",
                 "${workspaceFolder}/Src/\\*.cpp",
                 "${workspaceFolder}/Src/Scenes/\\*.cpp",
                 "${workspaceFolder}/Dependencies/Src/\\*.c*",
                 "${workspaceFolder}/Dependencies/Src/imgui/\\*",
                 "-lglfw3dll",
-                "-lassimp",
+                "-lfreetype",
                 "-o",
 
                 "${workspaceFolder}/Main.exe"

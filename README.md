@@ -8,7 +8,7 @@ This is a simple 2D engine written in C++ using OpenGL. It is intended to be use
 On Linux:
     
 ```bash
-sudo apt-get install mesa-common-dev libgl-dev libglfw3-dev libassimp-dev libxrandr-dev libxi-dev libxxf86vm-dev libxcursor-dev libxinerama-dev libxext-dev libxrender-dev libglu1-mesa-dev
+sudo apt-get install mesa-common-dev libgl-dev libglfw3-dev libassimp-dev libxrandr-dev libxi-dev libxxf86vm-dev libxcursor-dev libxinerama-dev libxext-dev libxrender-dev libglu1-mesa-dev libfreetype6-dev
 ```
 
 On Windows:

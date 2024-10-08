@@ -8,6 +8,9 @@
 #include <Collisions.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <INIReader.h>
+#include <ft2build.h>
+#include FT_FREETYPE_H
 
 // ==================================================== Setup ====================================================
 CollisionsScene::CollisionsScene() {
@@ -45,6 +48,19 @@ void CollisionsScene::load() {
     // Set the speed and direction
     speed = 0.002f;
     direction = glm::vec2(1.0f, 1.0f);
+
+    // Load freetype
+    FT_Library ft;
+    if (FT_Init_FreeType(&ft))
+    {
+        std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
+    }
+
+    FT_Face face;
+    if (FT_New_Face(ft, "Media/Fonts/Roboto-Regular.ttf", 0, &face))
+    {
+        std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;  
+    }
 }
 
 // ==================================================== Main Loop ====================================================
