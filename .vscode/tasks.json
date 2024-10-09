@@ -3,25 +3,15 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "C/C++: g++.exe build active file",
-            "command": "g++",
+            "label": "cmake: configure",
+            "command": "cmake",
             "args": [
-                "-g",
-                "-std=c++17",
-                "-I${workspaceFolder}/Include",
-                "-I${workspaceFolder}/Dependencies/Include",
-                "-I${workspaceFolder}/Dependencies/Include/imgui",
-                "-I${workspaceFolder}/Dependencies/Include/freetype2",
-                "-L${workspaceFolder}/Lib",
-                "${workspaceFolder}/Src/\\*.cpp",
-                "${workspaceFolder}/Src/Scenes/\\*.cpp",
-                "${workspaceFolder}/Dependencies/Src/\\*.c*",
-                "${workspaceFolder}/Dependencies/Src/imgui/\\*",
-                "-lglfw3dll",
-                "-lfreetype",
-                "-o",
-
-                "${workspaceFolder}/Main.exe"
+                "-S",
+                "${workspaceFolder}",
+                "-B",
+                "${workspaceFolder}/build",
+                "-G",
+                "MinGW Makefiles"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -30,6 +20,48 @@
                 "$gcc"
             ],
             "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "cmake: build",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build",
+                "--config",
+                "Debug",
+                "-j4"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "cmake: configure"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "cmake: clean",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build",
+                "--target",
+                "clean"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
         }
     ]
 }

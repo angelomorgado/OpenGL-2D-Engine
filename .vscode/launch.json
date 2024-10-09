@@ -2,11 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "g++.exe - Build and debug active file",
+            "name": "g++ - Build and debug project",
             "type": "cppdbg",
             "request": "launch",
-            // Make this launch.json the default one without having to select it in the debug menu
-            "preLaunchTask": "C/C++: g++.exe build active file",
+            "preLaunchTask": "cmake: build",
             "program": "${workspaceFolder}/Main.exe",
             "args": [],
             "stopAtEntry": false,
@@ -21,7 +20,7 @@
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ],
+            ]
         }
     ]
 }

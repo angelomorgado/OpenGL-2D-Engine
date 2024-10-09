@@ -61,8 +61,8 @@ void CollisionsScene::update() {
     square.setPosition(glm::vec2(offset));
 
     if (Collisions::checkCircleCollision(circle, square)) {
-        square.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
-        circle.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
+        square.setColor(glm::vec3(1.0f, 0.0f, 1.0f));
+        circle.setColor(glm::vec3(1.0f, 0.0f, 1.0f));
     } else {
         square.setColor(glm::vec3(1.0f));
         circle.setColor(glm::vec3(1.0f));
