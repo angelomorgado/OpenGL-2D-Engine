@@ -9,8 +9,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <INIReader.h>
-#include <ft2build.h>
-#include FT_FREETYPE_H
 
 // ==================================================== Setup ====================================================
 CollisionsScene::CollisionsScene() {
@@ -36,6 +34,7 @@ void CollisionsScene::load() {
     // Load shaders
     textureShader.load("Shaders/standardTexture.vert", "Shaders/standardTexture.frag");
     standardShader.load("standardTexture");
+    textShader.load("text");
 
     // Load textures
     texture1.load("Media/Textures/container.jpg", "texture1");
@@ -49,18 +48,7 @@ void CollisionsScene::load() {
     speed = 0.002f;
     direction = glm::vec2(1.0f, 1.0f);
 
-    // Load freetype
-    FT_Library ft;
-    if (FT_Init_FreeType(&ft))
-    {
-        std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
-    }
-
-    FT_Face face;
-    if (FT_New_Face(ft, "Media/Fonts/Roboto-Regular.ttf", 0, &face))
-    {
-        std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;  
-    }
+    font1.loadFont("Media/Fonts/Roboto-Regular.ttf", 48, textShader, screen_width, screen_height);
 }
 
 // ==================================================== Main Loop ====================================================
@@ -96,6 +84,7 @@ void CollisionsScene::render() {
     // The order in wich the objects are rendered is important
     square.render();
     circle.render();
+    font1.renderText("Collisions Scene", glm::vec2(10.0f, 10.0f), 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 }
 
 
@@ -137,6 +126,8 @@ int CollisionsScene::clean() {
     texture2.clean();
     standardShader.clean();
     textureShader.clean();
+    textShader.clean();
+    font1.clean();
 
     glfwTerminate();
     return 0;

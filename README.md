@@ -37,7 +37,7 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 - [x] AABB Collision detection
 - [x] Window Border Collision detection
 - [x] Circle Collision detection
-- [ ] Text rendering
+- [x] Text rendering
 - [ ] Audio support
 - [ ] VFX support
 - [ ] Physics support
@@ -65,6 +65,8 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 [Object](#object)
 
 [Collisions](#collisions)
+
+[Text](#text)
 
 ---
 
@@ -361,4 +363,23 @@ bool checkCircleCollision(Object& circle, Object& obj) // Does Circle collision 
 
 unsigned int  checkWindowCollision(Object& obj) // Checks if the object is colliding with the window and returns the border that is colliding with the object (0 = No collision, 2 = top, 3 = right, 4 = bottom, 5 = left, 6+:Corner)
 
+```
+
+---
+
+### Text
+
+This engine has a class that can render text in the screen. The text is rendered using the [FreeType](https://www.freetype.org/) library. To use it:
+
+```cpp
+Font text;
+
+// In the load method of the scene
+text.loadFont("Media/Fonts/fontname", int fontSize, Shader &textShader, int screenWidth, int screenHeight);
+
+// In the render method of the scene
+text.renderText("Text to render", glm::vec2 position, float scale, glm::vec3 color);
+
+// In the clean method of the scene
+text.clean();
 ```

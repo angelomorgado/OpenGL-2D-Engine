@@ -7,6 +7,7 @@
 #include <Object.hpp>
 #include <glm/glm.hpp>
 #include <string>
+#include <TextRendering.hpp>
 
 class CollisionsScene : public Scene {
 public:
@@ -27,9 +28,10 @@ private:
     
     // Object Attributes
     Shape shape1, shape2;
-    Shader standardShader, textureShader;
+    Shader standardShader, textureShader, textShader;
     Texture texture1;
     Texture texture2;
+    Font font1;
     float offset;
     Object square, circle;
     float speed;
