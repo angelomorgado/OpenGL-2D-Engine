@@ -9,7 +9,7 @@
                 "-S",
                 "${workspaceFolder}",
                 "-B",
-                "${workspaceFolder}/build",
+                "${workspaceFolder}/Build",
                 "-G",
                 "MinGW Makefiles"
             ],
@@ -27,7 +27,7 @@
             "command": "cmake",
             "args": [
                 "--build",
-                "${workspaceFolder}/build",
+                "${workspaceFolder}/Build",
                 "--config",
                 "Debug",
                 "-j4"
@@ -52,7 +52,7 @@
             "command": "cmake",
             "args": [
                 "--build",
-                "${workspaceFolder}/build",
+                "${workspaceFolder}/Build",
                 "--target",
                 "clean"
             ],
