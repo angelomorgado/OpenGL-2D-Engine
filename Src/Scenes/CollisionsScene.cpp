@@ -108,9 +108,9 @@ void CollisionsScene::render() {
     font1.renderText("Collisions Scene", glm::vec2(10.0f, 10.0f), 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 
     // Screen effect
-    screenEffect.applyFilter(screenShader);
-    screenObj.render();
-    screenEffect.unbind();
+    // screenEffect.applyFilter(screenShader);
+    // screenObj.render();
+    // screenEffect.unbind();
 }
 
 
