@@ -55,7 +55,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = C:\Users\angel\Desktop\OpenGL-2D-Engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\angel\Desktop\OpenGL-2D-Engine\build
+CMAKE_BINARY_DIR = C:\Users\angel\Desktop\OpenGL-2D-Engine\Build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/OpenGLProject.dir/depend.make
@@ -72,7 +72,7 @@ CMakeFiles/OpenGLProject.dir/Dependencies/Src/INIReader.cpp.obj: CMakeFiles/Open
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/INIReader.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/INIReader.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Src/INIReader.cpp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/INIReader.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/INIReader.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/INIReader.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Dependencies/Src/INIReader.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Dependencies\Src\INIReader.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Dependencies\Src\INIReader.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Dependencies\Src\INIReader.cpp
 
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/INIReader.cpp.i: cmake_force
@@ -87,7 +87,7 @@ CMakeFiles/OpenGLProject.dir/Dependencies/Src/glad.c.obj: CMakeFiles/OpenGLProje
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/glad.c.obj: CMakeFiles/OpenGLProject.dir/includes_C.rsp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/glad.c.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Src/glad.c
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/glad.c.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/OpenGLProject.dir/Dependencies/Src/glad.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/OpenGLProject.dir/Dependencies/Src/glad.c.obj"
 	C:\msys64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Dependencies/Src/glad.c.obj -MF CMakeFiles\OpenGLProject.dir\Dependencies\Src\glad.c.obj.d -o CMakeFiles\OpenGLProject.dir\Dependencies\Src\glad.c.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Dependencies\Src\glad.c
 
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/glad.c.i: cmake_force
@@ -102,7 +102,7 @@ CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui.cpp.obj: CMakeFiles/Op
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Src/imgui/imgui.cpp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Dependencies\Src\imgui\imgui.cpp
 
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui.cpp.i: cmake_force
@@ -117,7 +117,7 @@ CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_demo.cpp.obj: CMakeFil
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_demo.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_demo.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Src/imgui/imgui_demo.cpp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_demo.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_demo.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_demo.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_demo.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_demo.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_demo.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Dependencies\Src\imgui\imgui_demo.cpp
 
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_demo.cpp.i: cmake_force
@@ -132,7 +132,7 @@ CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_draw.cpp.obj: CMakeFil
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_draw.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_draw.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Src/imgui/imgui_draw.cpp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_draw.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_draw.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_draw.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_draw.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_draw.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_draw.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Dependencies\Src\imgui\imgui_draw.cpp
 
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_draw.cpp.i: cmake_force
@@ -147,7 +147,7 @@ CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_glfw.cpp.obj: CMa
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_glfw.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_glfw.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Src/imgui/imgui_impl_glfw.cpp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_glfw.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_glfw.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_glfw.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_glfw.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_impl_glfw.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_impl_glfw.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Dependencies\Src\imgui\imgui_impl_glfw.cpp
 
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_glfw.cpp.i: cmake_force
@@ -162,7 +162,7 @@ CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_opengl3.cpp.obj: 
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_opengl3.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_opengl3.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Src/imgui/imgui_impl_opengl3.cpp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_opengl3.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_opengl3.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_opengl3.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_opengl3.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_impl_opengl3.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_impl_opengl3.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Dependencies\Src\imgui\imgui_impl_opengl3.cpp
 
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_impl_opengl3.cpp.i: cmake_force
@@ -177,7 +177,7 @@ CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_tables.cpp.obj: CMakeF
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_tables.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_tables.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Src/imgui/imgui_tables.cpp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_tables.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_tables.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_tables.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_tables.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_tables.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_tables.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Dependencies\Src\imgui\imgui_tables.cpp
 
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_tables.cpp.i: cmake_force
@@ -192,7 +192,7 @@ CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_widgets.cpp.obj: CMake
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_widgets.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_widgets.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Src/imgui/imgui_widgets.cpp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_widgets.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_widgets.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_widgets.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_widgets.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_widgets.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Dependencies\Src\imgui\imgui_widgets.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Dependencies\Src\imgui\imgui_widgets.cpp
 
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/imgui/imgui_widgets.cpp.i: cmake_force
@@ -207,7 +207,7 @@ CMakeFiles/OpenGLProject.dir/Dependencies/Src/ini.c.obj: CMakeFiles/OpenGLProjec
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/ini.c.obj: CMakeFiles/OpenGLProject.dir/includes_C.rsp
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/ini.c.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Src/ini.c
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/ini.c.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/OpenGLProject.dir/Dependencies/Src/ini.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/OpenGLProject.dir/Dependencies/Src/ini.c.obj"
 	C:\msys64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Dependencies/Src/ini.c.obj -MF CMakeFiles\OpenGLProject.dir\Dependencies\Src\ini.c.obj.d -o CMakeFiles\OpenGLProject.dir\Dependencies\Src\ini.c.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Dependencies\Src\ini.c
 
 CMakeFiles/OpenGLProject.dir/Dependencies/Src/ini.c.i: cmake_force
@@ -222,7 +222,7 @@ CMakeFiles/OpenGLProject.dir/Src/Callbacks.cpp.obj: CMakeFiles/OpenGLProject.dir
 CMakeFiles/OpenGLProject.dir/Src/Callbacks.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Callbacks.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Callbacks.cpp
 CMakeFiles/OpenGLProject.dir/Src/Callbacks.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Callbacks.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Callbacks.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Callbacks.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Callbacks.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Callbacks.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Callbacks.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Callbacks.cpp.i: cmake_force
@@ -237,7 +237,7 @@ CMakeFiles/OpenGLProject.dir/Src/Collisions.cpp.obj: CMakeFiles/OpenGLProject.di
 CMakeFiles/OpenGLProject.dir/Src/Collisions.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Collisions.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Collisions.cpp
 CMakeFiles/OpenGLProject.dir/Src/Collisions.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Collisions.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Collisions.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Collisions.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Collisions.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Collisions.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Collisions.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Collisions.cpp.i: cmake_force
@@ -252,7 +252,7 @@ CMakeFiles/OpenGLProject.dir/Src/Main.cpp.obj: CMakeFiles/OpenGLProject.dir/flag
 CMakeFiles/OpenGLProject.dir/Src/Main.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Main.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Main.cpp
 CMakeFiles/OpenGLProject.dir/Src/Main.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Main.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Main.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Main.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Main.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Main.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Main.cpp.i: cmake_force
@@ -267,7 +267,7 @@ CMakeFiles/OpenGLProject.dir/Src/Object.cpp.obj: CMakeFiles/OpenGLProject.dir/fl
 CMakeFiles/OpenGLProject.dir/Src/Object.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Object.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Object.cpp
 CMakeFiles/OpenGLProject.dir/Src/Object.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Object.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Object.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Object.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Object.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Object.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Object.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Object.cpp.i: cmake_force
@@ -282,7 +282,7 @@ CMakeFiles/OpenGLProject.dir/Src/Scenes/CircleInsideSquareScene.cpp.obj: CMakeFi
 CMakeFiles/OpenGLProject.dir/Src/Scenes/CircleInsideSquareScene.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Scenes/CircleInsideSquareScene.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Scenes/CircleInsideSquareScene.cpp
 CMakeFiles/OpenGLProject.dir/Src/Scenes/CircleInsideSquareScene.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Scenes/CircleInsideSquareScene.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Scenes/CircleInsideSquareScene.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Scenes/CircleInsideSquareScene.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Scenes\CircleInsideSquareScene.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Scenes\CircleInsideSquareScene.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Scenes\CircleInsideSquareScene.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Scenes/CircleInsideSquareScene.cpp.i: cmake_force
@@ -297,7 +297,7 @@ CMakeFiles/OpenGLProject.dir/Src/Scenes/CollisionsScene.cpp.obj: CMakeFiles/Open
 CMakeFiles/OpenGLProject.dir/Src/Scenes/CollisionsScene.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Scenes/CollisionsScene.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Scenes/CollisionsScene.cpp
 CMakeFiles/OpenGLProject.dir/Src/Scenes/CollisionsScene.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Scenes/CollisionsScene.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Scenes/CollisionsScene.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Scenes/CollisionsScene.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Scenes\CollisionsScene.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Scenes\CollisionsScene.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Scenes\CollisionsScene.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Scenes/CollisionsScene.cpp.i: cmake_force
@@ -312,7 +312,7 @@ CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardScene.cpp.obj: CMakeFiles/OpenGL
 CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardScene.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardScene.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Scenes/StandardScene.cpp
 CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardScene.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardScene.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardScene.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardScene.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Scenes\StandardScene.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Scenes\StandardScene.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Scenes\StandardScene.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardScene.cpp.i: cmake_force
@@ -327,7 +327,7 @@ CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardTextureScene.cpp.obj: CMakeFiles
 CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardTextureScene.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardTextureScene.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Scenes/StandardTextureScene.cpp
 CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardTextureScene.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardTextureScene.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardTextureScene.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardTextureScene.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Scenes\StandardTextureScene.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Scenes\StandardTextureScene.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Scenes\StandardTextureScene.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Scenes/StandardTextureScene.cpp.i: cmake_force
@@ -342,7 +342,7 @@ CMakeFiles/OpenGLProject.dir/Src/Setup.cpp.obj: CMakeFiles/OpenGLProject.dir/fla
 CMakeFiles/OpenGLProject.dir/Src/Setup.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Setup.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Setup.cpp
 CMakeFiles/OpenGLProject.dir/Src/Setup.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Setup.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Setup.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Setup.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Setup.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Setup.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Setup.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Setup.cpp.i: cmake_force
@@ -357,7 +357,7 @@ CMakeFiles/OpenGLProject.dir/Src/Shader.cpp.obj: CMakeFiles/OpenGLProject.dir/fl
 CMakeFiles/OpenGLProject.dir/Src/Shader.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Shader.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Shader.cpp
 CMakeFiles/OpenGLProject.dir/Src/Shader.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Shader.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Shader.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Shader.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Shader.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Shader.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Shader.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Shader.cpp.i: cmake_force
@@ -372,7 +372,7 @@ CMakeFiles/OpenGLProject.dir/Src/Shapes.cpp.obj: CMakeFiles/OpenGLProject.dir/fl
 CMakeFiles/OpenGLProject.dir/Src/Shapes.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Shapes.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Shapes.cpp
 CMakeFiles/OpenGLProject.dir/Src/Shapes.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Shapes.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Shapes.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Shapes.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Shapes.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Shapes.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Shapes.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Shapes.cpp.i: cmake_force
@@ -387,7 +387,7 @@ CMakeFiles/OpenGLProject.dir/Src/TextRendering.cpp.obj: CMakeFiles/OpenGLProject
 CMakeFiles/OpenGLProject.dir/Src/TextRendering.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/TextRendering.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/TextRendering.cpp
 CMakeFiles/OpenGLProject.dir/Src/TextRendering.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/TextRendering.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/TextRendering.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/TextRendering.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\TextRendering.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\TextRendering.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\TextRendering.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/TextRendering.cpp.i: cmake_force
@@ -402,7 +402,7 @@ CMakeFiles/OpenGLProject.dir/Src/Texture.cpp.obj: CMakeFiles/OpenGLProject.dir/f
 CMakeFiles/OpenGLProject.dir/Src/Texture.cpp.obj: CMakeFiles/OpenGLProject.dir/includes_CXX.rsp
 CMakeFiles/OpenGLProject.dir/Src/Texture.cpp.obj: C:/Users/angel/Desktop/OpenGL-2D-Engine/Src/Texture.cpp
 CMakeFiles/OpenGLProject.dir/Src/Texture.cpp.obj: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Texture.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/OpenGLProject.dir/Src/Texture.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/Src/Texture.cpp.obj -MF CMakeFiles\OpenGLProject.dir\Src\Texture.cpp.obj.d -o CMakeFiles\OpenGLProject.dir\Src\Texture.cpp.obj -c C:\Users\angel\Desktop\OpenGL-2D-Engine\Src\Texture.cpp
 
 CMakeFiles/OpenGLProject.dir/Src/Texture.cpp.i: cmake_force
@@ -466,12 +466,12 @@ C:/Users/angel/Desktop/OpenGL-2D-Engine/Main.exe: CMakeFiles/OpenGLProject.dir/S
 C:/Users/angel/Desktop/OpenGL-2D-Engine/Main.exe: CMakeFiles/OpenGLProject.dir/Src/TextRendering.cpp.obj
 C:/Users/angel/Desktop/OpenGL-2D-Engine/Main.exe: CMakeFiles/OpenGLProject.dir/Src/Texture.cpp.obj
 C:/Users/angel/Desktop/OpenGL-2D-Engine/Main.exe: CMakeFiles/OpenGLProject.dir/build.make
-C:/Users/angel/Desktop/OpenGL-2D-Engine/Main.exe: C:/Users/angel/Desktop/OpenGL-2D-Engine/Lib/libglfw3dll.a
-C:/Users/angel/Desktop/OpenGL-2D-Engine/Main.exe: C:/Users/angel/Desktop/OpenGL-2D-Engine/Lib/libfreetype.a
+C:/Users/angel/Desktop/OpenGL-2D-Engine/Main.exe: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Lib/libglfw3dll.a
+C:/Users/angel/Desktop/OpenGL-2D-Engine/Main.exe: C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Lib/libfreetype.a
 C:/Users/angel/Desktop/OpenGL-2D-Engine/Main.exe: CMakeFiles/OpenGLProject.dir/linkLibs.rsp
 C:/Users/angel/Desktop/OpenGL-2D-Engine/Main.exe: CMakeFiles/OpenGLProject.dir/objects1.rsp
 C:/Users/angel/Desktop/OpenGL-2D-Engine/Main.exe: CMakeFiles/OpenGLProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Linking CXX executable C:\Users\angel\Desktop\OpenGL-2D-Engine\Main.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Linking CXX executable C:\Users\angel\Desktop\OpenGL-2D-Engine\Main.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\OpenGLProject.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -483,6 +483,6 @@ CMakeFiles/OpenGLProject.dir/clean:
 .PHONY : CMakeFiles/OpenGLProject.dir/clean
 
 CMakeFiles/OpenGLProject.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\angel\Desktop\OpenGL-2D-Engine C:\Users\angel\Desktop\OpenGL-2D-Engine C:\Users\angel\Desktop\OpenGL-2D-Engine\build C:\Users\angel\Desktop\OpenGL-2D-Engine\build C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles\OpenGLProject.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\angel\Desktop\OpenGL-2D-Engine C:\Users\angel\Desktop\OpenGL-2D-Engine C:\Users\angel\Desktop\OpenGL-2D-Engine\Build C:\Users\angel\Desktop\OpenGL-2D-Engine\Build C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles\OpenGLProject.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/OpenGLProject.dir/depend
 

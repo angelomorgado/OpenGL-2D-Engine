@@ -8,6 +8,7 @@
 #include <glm/glm.hpp>
 #include <string>
 #include <TextRendering.hpp>
+#include "miniaudio.h"
 
 class CollisionsScene : public Scene {
 public:
@@ -36,6 +37,8 @@ private:
     Object square, circle;
     float speed;
     glm::vec2 direction;
+    ma_result audioResult;
+    ma_engine audioEngine;
 
     void processInput();
     void borderCollision(Object& obj);

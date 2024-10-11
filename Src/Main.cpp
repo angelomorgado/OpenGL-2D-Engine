@@ -2,6 +2,8 @@
 #include <memory>
 #include <INIReader.h>
 #include <SceneManager.hpp>
+#define MINIAUDIO_IMPLEMENTATION
+#include "miniaudio.h"
 // #include <Scenes/StandardScene.hpp>
 // #include <Scenes/StandardTextureScene.hpp>
 #include <Scenes/CollisionsScene.hpp>

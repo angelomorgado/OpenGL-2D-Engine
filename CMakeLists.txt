@@ -25,11 +25,11 @@ file(GLOB_RECURSE SOURCES
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Add library directories
-link_directories(${CMAKE_SOURCE_DIR}/Lib)
+link_directories(${CMAKE_SOURCE_DIR}/Dependencies/Lib)
 
 # Find libraries
-find_library(GLFW_LIBRARY glfw3dll PATHS ${CMAKE_SOURCE_DIR}/Lib)
-find_library(FREETYPE_LIBRARY freetype PATHS ${CMAKE_SOURCE_DIR}/Lib)
+find_library(GLFW_LIBRARY glfw3dll PATHS ${CMAKE_SOURCE_DIR}/Dependencies/Lib)
+find_library(FREETYPE_LIBRARY freetype PATHS ${CMAKE_SOURCE_DIR}/Dependencies/Lib)
 
 # Link libraries
 target_link_libraries(${PROJECT_NAME} 
@@ -44,6 +44,10 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 # Rename output to Main.exe
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "Main")
+
+# Copy all DLLs from dependencies/bin to output directory
+file(GLOB_RECURSE DLLS "${CMAKE_SOURCE_DIR}/Dependencies/Bin/*.dll")
+file(COPY ${DLLS} DESTINATION ${CMAKE_SOURCE_DIR})
 
 # Print some debug information
 message(STATUS "GLFW_LIBRARY: ${GLFW_LIBRARY}")

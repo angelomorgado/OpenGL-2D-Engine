@@ -345,6 +345,7 @@ CMakeFiles/OpenGLProject.dir/Src/Scenes/CollisionsScene.cpp.obj: \
  C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Include/freetype2/freetype/fterrors.h \
  C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Include/freetype2/freetype/ftmoderr.h \
  C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Include/freetype2/freetype/fterrdef.h \
+ C:/Users/angel/Desktop/OpenGL-2D-Engine/Dependencies/Include/miniaudio.h \
  C:/Users/angel/Desktop/OpenGL-2D-Engine/Include/SceneManager.hpp \
  C:/msys64/mingw64/include/c++/12.2.0/unordered_map \
  C:/msys64/mingw64/include/c++/12.2.0/bits/hashtable.h \

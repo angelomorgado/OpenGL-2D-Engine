@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 set(CMAKE_RELATIVE_PATH_TOP_SOURCE "C:/Users/angel/Desktop/OpenGL-2D-Engine")
-set(CMAKE_RELATIVE_PATH_TOP_BINARY "C:/Users/angel/Desktop/OpenGL-2D-Engine/build")
+set(CMAKE_RELATIVE_PATH_TOP_BINARY "C:/Users/angel/Desktop/OpenGL-2D-Engine/Build")
 
 # Force unix paths in dependencies.
 set(CMAKE_FORCE_UNIX_PATHS 1)

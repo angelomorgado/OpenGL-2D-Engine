@@ -1,3 +1,3 @@
-C:/Users/angel/Desktop/OpenGL-2D-Engine/build/CMakeFiles/OpenGLProject.dir
-C:/Users/angel/Desktop/OpenGL-2D-Engine/build/CMakeFiles/edit_cache.dir
-C:/Users/angel/Desktop/OpenGL-2D-Engine/build/CMakeFiles/rebuild_cache.dir
+C:/Users/angel/Desktop/OpenGL-2D-Engine/Build/CMakeFiles/OpenGLProject.dir
+C:/Users/angel/Desktop/OpenGL-2D-Engine/Build/CMakeFiles/edit_cache.dir
+C:/Users/angel/Desktop/OpenGL-2D-Engine/Build/CMakeFiles/rebuild_cache.dir

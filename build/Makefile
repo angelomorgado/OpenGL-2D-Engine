@@ -59,7 +59,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = C:\Users\angel\Desktop\OpenGL-2D-Engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\angel\Desktop\OpenGL-2D-Engine\build
+CMAKE_BINARY_DIR = C:\Users\angel\Desktop\OpenGL-2D-Engine\Build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles C:\Users\angel\Desktop\OpenGL-2D-Engine\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\angel\Desktop\OpenGL-2D-Engine\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\angel\Desktop\OpenGL-2D-Engine\Build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target

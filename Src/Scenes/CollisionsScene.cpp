@@ -49,6 +49,13 @@ void CollisionsScene::load() {
     direction = glm::vec2(1.0f, 1.0f);
 
     font1.loadFont("Media/Fonts/Roboto-Regular.ttf", 48, textShader, screen_width, screen_height);
+
+    // Audio
+    audioResult = ma_engine_init(nullptr, &audioEngine);
+    if (audioResult != MA_SUCCESS) {
+        std::cout << "Failed to initialize audio engine\n";
+    }
+    ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep.mp3", NULL);
 }
 
 // ==================================================== Main Loop ====================================================
