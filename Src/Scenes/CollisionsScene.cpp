@@ -14,12 +14,12 @@
 CollisionsScene::CollisionsScene() {
     INIReader reader("Config.ini");
     title = "Collisions Scene";
-    screen_width = reader.GetInteger("Window", "width", 800);
-    screen_height = reader.GetInteger("Window", "height", 600);
+    screenWidth = reader.GetInteger("Window", "width", 800);
+    screenHeight = reader.GetInteger("Window", "height", 600);
     fullscreen = reader.GetBoolean("Window", "fullscreen", false);
     resizable = reader.GetBoolean("Window", "resizable", true);
     
-    window = Setup::complete_setup(title.c_str(), screen_width, screen_height, fullscreen, resizable);
+    window = Setup::complete_setup(title.c_str(), screenWidth, screenHeight, fullscreen, resizable);
 
     // Lock Mouse
     // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -30,11 +30,14 @@ void CollisionsScene::load() {
     // Shapes
     shape1.createSquare();
     shape2.createCircle();
+    screenShape.createScreen();
 
     // Load shaders
     textureShader.load("Shaders/standardTexture.vert", "Shaders/standardTexture.frag");
     standardShader.load("standardTexture");
     textShader.load("text");
+
+    screenShader.load("Shaders/Screen/simpleScreen.vert", "Shaders/Screen/simpleScreen.frag");
 
     // Load textures
     texture1.load("Media/Textures/container.jpg", "texture1");
@@ -43,13 +46,17 @@ void CollisionsScene::load() {
     // Load objects
     circle.load(shape2, textureShader, {texture2}, glm::vec2(-0.3f, 0.0f), 0.0f, glm::vec2(0.3f));
     square.load(shape1, textureShader, {texture1, texture2}, glm::vec2(0.3f, 0.0f), 0.0f, glm::vec2(0.3f));
+    screenObj.load(screenShape);
+
+    // Load framebuffer
+    screenEffect.loadFramebuffer(screenWidth, screenHeight);
 
     // Set the speed and direction
     speed = 0.002f;
     direction = glm::vec2(1.0f, 1.0f);
     flag = false;
 
-    font1.loadFont("Media/Fonts/Roboto-Regular.ttf", 48, textShader, screen_width, screen_height);
+    font1.loadFont("Media/Fonts/Roboto-Regular.ttf", 48, textShader, screenWidth, screenHeight);
 
     // Audio
     if (ma_engine_init(nullptr, &audioEngine) != MA_SUCCESS) {
@@ -92,10 +99,18 @@ void CollisionsScene::render() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    // Bind Framebuffer
+    // screenEffect.bind();
+
     // The order in wich the objects are rendered is important
     square.render();
     circle.render();
     font1.renderText("Collisions Scene", glm::vec2(10.0f, 10.0f), 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+
+    // Screen effect
+    screenEffect.applyFilter(screenShader);
+    screenObj.render();
+    screenEffect.unbind();
 }
 
 

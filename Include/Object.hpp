@@ -9,7 +9,6 @@
 #include <Shapes.hpp>
 #include <Texture.hpp>
 #include <Shader.hpp>
-
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
@@ -18,7 +17,7 @@
 
 class Object {
     public:
-        void load(Shape shape, Shader shader, std::vector<Texture> textures = {}, glm::vec2 position = glm::vec2(0.0f), float rotation = 0.0f, glm::vec2 scale = glm::vec2(0.0f));
+        void load(Shape shape, Shader shader = Shader(), std::vector<Texture> textures = {}, glm::vec2 position = glm::vec2(0.0f), float rotation = 0.0f, glm::vec2 scale = glm::vec2(0.0f));
         void render();
         void clean();
         void move(glm::vec2 position);
@@ -50,6 +49,7 @@ class Object {
         unsigned int VBO, VAO, EBO;
 
         void updateTransform();
+        void setVertexAttributes();
 };
 
 #endif

@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-
 project(OpenGLProject VERSION 1.0)
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
@@ -13,16 +11,21 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/Dependencies/Include/freetype2
 )
 
-# Find all source files
-file(GLOB_RECURSE SOURCES 
+# Find source files
+file(GLOB_RECURSE SCENE_SOURCES "${CMAKE_SOURCE_DIR}/Src/Scenes/*.cpp")
+file(GLOB_RECURSE OTHER_SOURCES 
     "${CMAKE_SOURCE_DIR}/Src/*.cpp"
-    "${CMAKE_SOURCE_DIR}/Src/Scenes/*.cpp"
     "${CMAKE_SOURCE_DIR}/Dependencies/Src/*.c*"
     "${CMAKE_SOURCE_DIR}/Dependencies/Src/imgui/*"
 )
+list(REMOVE_ITEM OTHER_SOURCES ${SCENE_SOURCES})
+
+# Create object libraries
+add_library(SceneObjects OBJECT ${SCENE_SOURCES})
+add_library(OtherObjects OBJECT ${OTHER_SOURCES})
 
 # Create executable
-add_executable(${PROJECT_NAME} ${SOURCES})
+add_executable(${PROJECT_NAME} $<TARGET_OBJECTS:SceneObjects> $<TARGET_OBJECTS:OtherObjects>)
 
 # Add library directories
 link_directories(${CMAKE_SOURCE_DIR}/Dependencies/Lib)

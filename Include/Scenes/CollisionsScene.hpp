@@ -5,12 +5,14 @@
 #include <Texture.hpp>
 #include <Shapes.hpp>
 #include <Object.hpp>
+#include <Framebuffer.hpp>
 #include <glm/glm.hpp>
 #include <string>
 #include <TextRendering.hpp>
 #include "miniaudio.h"
 
 class CollisionsScene : public Scene {
+
 public:
     CollisionsScene();
     void load() override;
@@ -21,20 +23,21 @@ public:
 private:
     // Window attributes
     GLFWwindow* window;
-    int screen_width;
-    int screen_height;
+    int screenWidth;
+    int screenHeight;
     std::string title;
     bool fullscreen;
     bool resizable;
     
     // Object Attributes
-    Shape shape1, shape2;
-    Shader standardShader, textureShader, textShader;
+    Shape shape1, shape2, screenShape;
+    Shader standardShader, textureShader, textShader, screenShader;
     Texture texture1;
     Texture texture2;
+    Framebuffer screenEffect;
     Font font1;
     float offset;
-    Object square, circle;
+    Object square, circle, screenObj;
     float speed;
     glm::vec2 direction;
     ma_engine audioEngine;
