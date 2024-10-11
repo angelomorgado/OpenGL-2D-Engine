@@ -1,1 +1,3 @@
 CMakecache.txt
+Build/
+*.dll
