@@ -47,15 +47,14 @@ void CollisionsScene::load() {
     // Set the speed and direction
     speed = 0.002f;
     direction = glm::vec2(1.0f, 1.0f);
+    flag = false;
 
     font1.loadFont("Media/Fonts/Roboto-Regular.ttf", 48, textShader, screen_width, screen_height);
 
     // Audio
-    audioResult = ma_engine_init(nullptr, &audioEngine);
-    if (audioResult != MA_SUCCESS) {
+    if (ma_engine_init(nullptr, &audioEngine) != MA_SUCCESS) {
         std::cout << "Failed to initialize audio engine\n";
     }
-    ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep.mp3", NULL);
 }
 
 // ==================================================== Main Loop ====================================================
@@ -70,9 +69,14 @@ void CollisionsScene::update() {
     if (Collisions::checkCircleCollision(circle, square)) {
         square.setColor(glm::vec3(1.0f, 0.0f, 1.0f));
         circle.setColor(glm::vec3(1.0f, 0.0f, 1.0f));
+        if(!flag) {
+            ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep.mp3", NULL);
+            flag = true;
+        }
     } else {
         square.setColor(glm::vec3(1.0f));
         circle.setColor(glm::vec3(1.0f));
+        flag = false;
     }
 
     borderCollision(circle);
@@ -135,6 +139,7 @@ int CollisionsScene::clean() {
     textureShader.clean();
     textShader.clean();
     font1.clean();
+    ma_engine_uninit(&audioEngine);
 
     glfwTerminate();
     return 0;

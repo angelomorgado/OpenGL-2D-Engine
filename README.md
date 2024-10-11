@@ -38,7 +38,7 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
 - [x] Window Border Collision detection
 - [x] Circle Collision detection
 - [x] Text rendering
-- [ ] Audio support
+- [x] Audio support
 - [ ] VFX support
 - [ ] Physics support
 - [ ] 2D Object import/file from file/image
@@ -383,3 +383,9 @@ text.renderText("Text to render", glm::vec2 position, float scale, glm::vec3 col
 // In the clean method of the scene
 text.clean();
 ```
+
+---
+
+### Audio
+
+This engine uses the [miniaudio](https://miniaud.io/) library. In order to play it please follow the instructions in its documentation.

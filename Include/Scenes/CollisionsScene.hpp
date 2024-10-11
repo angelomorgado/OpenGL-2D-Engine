@@ -37,8 +37,8 @@ private:
     Object square, circle;
     float speed;
     glm::vec2 direction;
-    ma_result audioResult;
     ma_engine audioEngine;
+    bool flag;
 
     void processInput();
     void borderCollision(Object& obj);
