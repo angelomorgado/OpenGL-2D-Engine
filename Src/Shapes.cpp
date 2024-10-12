@@ -33,20 +33,20 @@ void Shape::createSquare() {
 // Shape that covers the screen (e.g., for backgrounds or post processing)
 void Shape::createScreen() {
     vertices = {
-        // Positions        // Texture Coords
-        -1.0f,  1.0f, 0.0f, 0.0f, 1.0f, // Top Left
-        1.0f,  1.0f, 0.0f,  1.0f, 1.0f, // Top Right
-        1.0f, -1.0f, 0.0f,  1.0f, 0.0f, // Bottom Right
-        -1.0f, -1.0f, 0.0f, 0.0f, 0.0f  // Bottom Left
+        // positions   // texCoords
+        -1.0f,  1.0f,  0.0f, 1.0f,
+        -1.0f, -1.0f,  0.0f, 0.0f,
+        1.0f, -1.0f,  1.0f, 0.0f,
+
+        -1.0f,  1.0f,  0.0f, 1.0f,
+        1.0f, -1.0f,  1.0f, 0.0f,
+        1.0f,  1.0f,  1.0f, 1.0f
     };
 
-    indices = {
-        0, 1, 3, // First Triangle
-        1, 2, 3  // Second Triangle
-    };
+    indices = {};
 
     vertexAttributes = {
-        { 0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0 },                   // Position attribute (vec3)
+        { 0, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0 },                   // Position attribute (vec2)
         { 1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)) }  // Texture attribute (vec2)
     };
 

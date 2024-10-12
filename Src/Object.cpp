@@ -18,8 +18,10 @@ void Object::load(Shape shape, Shader shader, std::vector<Texture> textures, glm
     // Copy our vertices array into the buffer for OpenGL to use
     glBufferData(GL_ARRAY_BUFFER, shape.vertices.size() * sizeof(float), shape.vertices.data(), GL_STATIC_DRAW);
     // Generate and bind Element Buffer Object (EBO)
-    glGenBuffers(1, &EBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    if (shape.indices.size() > 0) {
+        glGenBuffers(1, &EBO);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    }
     // Copy our vertices array into the buffer for OpenGL to use
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, shape.indices.size() * sizeof(unsigned int), shape.indices.data(), GL_STATIC_DRAW); 
     // Set the vertex attributes pointers 
@@ -48,7 +50,14 @@ void Object::render() {
         }
     }
     glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, shape.numberOfVertices, GL_UNSIGNED_INT, 0);
+
+    if (shape.indices.size() == 0) {
+        glDrawArrays(GL_TRIANGLES, 0, shape.numberOfVertices);
+    }
+    else {
+        glDrawElements(GL_TRIANGLES, shape.numberOfVertices, GL_UNSIGNED_INT, 0);
+    }
+
     glBindVertexArray(0);
 }
 
