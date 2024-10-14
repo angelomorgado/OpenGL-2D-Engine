@@ -175,15 +175,18 @@ void Breakout::checkBoxBallCollision() {
                     ballDirection.y = -ballDirection.y;
                     ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep2.mp3", NULL);
                     boxesField[i][j] = false;
+                    return;
                 } else if (collision == 2) {
                     ballDirection.x = -ballDirection.x;
                     ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep2.mp3", NULL);
                     boxesField[i][j] = false;
+                    return;
                 } else if (collision == 3){
                     ballDirection.y = -ballDirection.y;
                     ballDirection.x = -ballDirection.x;
                     ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep2.mp3", NULL);
                     boxesField[i][j] = false;
+                    return;
                 }
             }
         }
