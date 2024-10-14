@@ -5,7 +5,6 @@
 #include <Texture.hpp>
 #include <Shapes.hpp>
 #include <Object.hpp>
-#include <Framebuffer.hpp>
 #include <glm/glm.hpp>
 #include <string>
 #include <TextRendering.hpp>
@@ -30,14 +29,13 @@ private:
     bool resizable;
     
     // Object Attributes
-    Shape shape1, shape2, screenShape;
-    Shader standardShader, textureShader, textShader, screenShader;
+    Shape shape1, shape2;
+    Shader standardShader, textureShader, textShader;
     Texture texture1;
     Texture texture2;
-    Framebuffer screenEffect;
     Font font1;
     float offset;
-    Object square, circle, screenObj;
+    Object square, circle, testObj;
     float speed;
     glm::vec2 direction;
     ma_engine audioEngine;

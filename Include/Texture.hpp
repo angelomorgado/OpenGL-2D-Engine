@@ -6,7 +6,7 @@
 
 class Texture {
 public:
-    void load(const char* path, std::string uniformName = "texture1");
+    void load(const char* path);
     void bind(int textureUnit = 0);
     void unbind();
     void clean();

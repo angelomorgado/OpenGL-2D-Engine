@@ -101,7 +101,7 @@ void Font::renderText(const std::string& text, glm::vec2 position, float scale, 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  
     // activate corresponding render state	
     textShader.use();
-    glUniform3f(glGetUniformLocation(textShader.ID, "textColor"), color.x, color.y, color.z);
+    glUniform3f(glGetUniformLocation(textShader.getID(), "textColor"), color.x, color.y, color.z);
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);
 

@@ -26,6 +26,7 @@ void Shape::createSquare() {
         { 2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)) }  // Texture attribute (vec2)
     };
 
+    drawFormat = GL_TRIANGLES;
     numberOfVertices = 6;  
     size = glm::vec2(1.0f);
 }
@@ -50,6 +51,7 @@ void Shape::createScreen() {
         { 1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)) }  // Texture attribute (vec2)
     };
 
+    drawFormat = GL_TRIANGLES;
     numberOfVertices = 6;  
     size = glm::vec2(2.0f);
 }
@@ -73,6 +75,7 @@ void Shape::createTriangle() {
         { 2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)) }  // Texture attribute (vec2)
     };
 
+    drawFormat = GL_TRIANGLES;
     numberOfVertices = 3; 
     size = glm::vec2(1.0f);
 }
@@ -100,6 +103,7 @@ void Shape::createCircle(int segments) {
         { 2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)) }  // Texture attribute (vec2)
     };
 
+    drawFormat = GL_TRIANGLES;
     numberOfVertices = segments * 3 + 1;
     size   = glm::vec2(1.0f);
     radius = 0.5f;

@@ -31,12 +31,12 @@ void CircleInsideSquareScene::load() {
     standardShader.load("standardTexture");
 
     // Load textures
-    texture1.load("Media/Textures/container.jpg", "texture1");
-    texture2.load("Media/Textures/awesomeface.png", "texture2");
+    texture1.load("Media/Textures/container.jpg");
+    texture2.load("Media/Textures/awesomeface.png");
 
     // Load objects
-    circle.load(shape2, textureShader, {texture2}, glm::vec2(0.0f, 0.05f), 0.0f, glm::vec2(0.1f));
-    square.load(shape1, textureShader, {texture1, texture2}, glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.5f));
+    circle.load(shape2, glm::vec2(0.0f, 0.05f), 0.0f, glm::vec2(0.1f));
+    square.load(shape1, glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.5f));
 
     // Set the speed and direction
     speed = 0.002f;
@@ -62,8 +62,8 @@ void CircleInsideSquareScene::render() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // The order in wich the objects are rendered is important
-    square.render();
-    circle.render();
+    // square.render(textureShader, texture1);
+    // circle.render(textureShader, texture2);
 }
 
 // ==================================================== Collision Detection ====================================================

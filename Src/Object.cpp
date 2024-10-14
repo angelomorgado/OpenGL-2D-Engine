@@ -1,9 +1,7 @@
 #include <Object.hpp>
 
-void Object::load(Shape shape, Shader shader, std::vector<Texture> textures, glm::vec2 position, float rotation, glm::vec2 scale) {
+void Object::load(Shape shape, glm::vec2 position, float rotation, glm::vec2 scale) {
     this->shape = shape;
-    this->textures = textures;
-    this->shader = shader;
     this->position = position;
     this->rotation = rotation;
     this->scale = scale;
@@ -31,31 +29,25 @@ void Object::load(Shape shape, Shader shader, std::vector<Texture> textures, glm
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     updateTransform();
-
-    // Set the texture units
-    if (shader.ID) {
-        shader.use();
-        for (unsigned int i = 0; i < textures.size(); i++) {
-            shader.setInt(textures[i].getUniformName(), i);
-        }
-    }
 }
 
-void Object::render() {
-    if(shader.ID) {
+void Object::render(Shader shader, Texture texture) {
+    if(shader.getID()) {
         shader.use();
         shader.setMat4("transform", transform);
-        for (unsigned int i = 0; i < textures.size(); i++) {
-            textures[i].bind(i);
+        if (texture.getID()) {
+            texture.bind(0);
+            shader.setInt("texture1", 0);
         }
     }
+
     glBindVertexArray(VAO);
 
     if (shape.indices.size() == 0) {
-        glDrawArrays(GL_TRIANGLES, 0, shape.numberOfVertices);
+        glDrawArrays(shape.drawFormat, 0, shape.numberOfVertices);
     }
     else {
-        glDrawElements(GL_TRIANGLES, shape.numberOfVertices, GL_UNSIGNED_INT, 0);
+        glDrawElements(shape.drawFormat, shape.numberOfVertices, GL_UNSIGNED_INT, 0);
     }
 
     glBindVertexArray(0);

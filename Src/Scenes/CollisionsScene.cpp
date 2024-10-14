@@ -30,26 +30,20 @@ void CollisionsScene::load() {
     // Shapes
     shape1.createSquare();
     shape2.createCircle();
-    screenShape.createScreen();
 
     // Load shaders
     textureShader.load("Shaders/standardTexture.vert", "Shaders/standardTexture.frag");
-    standardShader.load("standardTexture");
+    standardShader.load("standard");
     textShader.load("text");
 
-    screenShader.load("Shaders/Screen/simpleScreen.vert", "Shaders/Screen/simpleScreen.frag");
-
     // Load textures
-    texture1.load("Media/Textures/container.jpg", "texture1");
-    texture2.load("Media/Textures/awesomeface.png", "texture2");
+    texture1.load("Media/Textures/container.jpg");
+    texture2.load("Media/Textures/awesomeface.png");
 
     // Load objects
-    circle.load(shape2, textureShader, {texture2}, glm::vec2(-0.3f, 0.0f), 0.0f, glm::vec2(0.3f));
-    square.load(shape1, textureShader, {texture1, texture2}, glm::vec2(0.3f, 0.0f), 0.0f, glm::vec2(0.3f));
-    screenObj.load(screenShape);
-
-    // Load framebuffer
-    screenEffect.loadFramebuffer(screenWidth, screenHeight);
+    circle.load(shape2, glm::vec2(-0.3f, 0.0f), 0.0f, glm::vec2(0.3f));
+    square.load(shape1, glm::vec2(0.3f, 0.0f), 0.0f, glm::vec2(0.3f));
+    testObj.load(shape2);
 
     // Set the speed and direction
     speed = 0.002f;
@@ -99,20 +93,12 @@ void CollisionsScene::render() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // Bind Framebuffer
-    screenEffect.bind();
-
     // The order in wich the objects are rendered is important
-    square.render();
-    circle.render();
+    square.render(textureShader, texture1);
+    circle.render(textureShader, texture2);
+    testObj.render(standardShader);
     font1.renderText("Collisions Scene", glm::vec2(10.0f, 10.0f), 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
-
-    // Screen effect
-    screenEffect.applyFilter(screenShader);
-    screenObj.render();
-    screenEffect.unbind();
 }
-
 
 // ==================================================== Collision Detection ====================================================
 

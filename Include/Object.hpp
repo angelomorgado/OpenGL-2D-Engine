@@ -17,8 +17,8 @@
 
 class Object {
     public:
-        void load(Shape shape, Shader shader = Shader(), std::vector<Texture> textures = {}, glm::vec2 position = glm::vec2(0.0f), float rotation = 0.0f, glm::vec2 scale = glm::vec2(0.0f));
-        void render();
+        void load(Shape shape, glm::vec2 position = glm::vec2(0.0f), float rotation = 0.0f, glm::vec2 scale = glm::vec2(0.0f));
+        void render(Shader shader = Shader(), Texture texture = Texture());
         void clean();
         void move(glm::vec2 position);
 
@@ -39,8 +39,6 @@ class Object {
     private:
         // Private attributes
         Shape shape;
-        std::vector<Texture> textures;
-        Shader shader;
         glm::vec2 position;
         float rotation;
         glm::vec2 scale;

@@ -32,6 +32,7 @@ public:
     int numberOfVertices;
     float radius;
     glm::vec2 size;
+    GLenum drawFormat;
 
 };
 

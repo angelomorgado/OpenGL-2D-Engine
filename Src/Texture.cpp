@@ -6,9 +6,8 @@
 #include <iostream>
 #include <glad/glad.h>
 
-void Texture::load(const char* path, std::string uniformName) {
+void Texture::load(const char* path) {
     this->path = path;
-    this->uniformName = uniformName.c_str();
 
     glGenTextures(1, &ID);
     glBindTexture(GL_TEXTURE_2D, ID);
@@ -55,8 +54,4 @@ void Texture::clean() {
 
 unsigned int Texture::getID() {
     return ID;
-}
-
-const char* Texture::getUniformName() {
-    return uniformName;
 }
