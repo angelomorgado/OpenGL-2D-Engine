@@ -146,11 +146,18 @@ void Breakout::borderCollision(Object& obj) {
 }
 
 void Breakout::checkPaddleBallCollision() {
-    int collision = Collisions::checkAABBCollision(ball, paddle);
+    unsigned int collision = Collisions::checkCircleCollisionComplex(ball, paddle);
     if (collision) {
+        std::cout << collision << " Collision\n";
         ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep1.wav", NULL);
-        ballDirection.y = -ballDirection.y;
-        if (collision == 2) {
+        
+        if (collision == 1) {
+            ballDirection.y = -ballDirection.y;
+        }
+        else if (collision == 2) {
+            ballDirection.x = -ballDirection.x;
+        } else {
+            ballDirection.y = -ballDirection.y;
             ballDirection.x = -ballDirection.x;
         }
     }
@@ -161,10 +168,23 @@ void Breakout::checkBoxBallCollision() {
         // 9 columns
         for (int j=0; j<9; j++) {
             box.setPosition(boxesPosition[i][j]);
-            if (boxesField[i][j] && Collisions::checkCircleCollision(ball, box)) {
-                boxesField[i][j] = false;
-                ballDirection.y = -ballDirection.y;
-                ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep2.mp3", NULL);
+            if (boxesField[i][j]) {
+                unsigned int collision = Collisions::checkCircleCollisionComplex(ball, box);
+
+                if (collision == 1) {
+                    ballDirection.y = -ballDirection.y;
+                    ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep2.mp3", NULL);
+                    boxesField[i][j] = false;
+                } else if (collision == 2) {
+                    ballDirection.x = -ballDirection.x;
+                    ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep2.mp3", NULL);
+                    boxesField[i][j] = false;
+                } else if (collision == 3){
+                    ballDirection.y = -ballDirection.y;
+                    ballDirection.x = -ballDirection.x;
+                    ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep2.mp3", NULL);
+                    boxesField[i][j] = false;
+                }
             }
         }
     }

@@ -23,46 +23,51 @@ namespace Collisions {
         return collisionX && collisionY;
     }
 
-    /*
+    /* 
         Check if the two objects are colliding with each other (AABB)
         Returns:
-        0 - no collision,
-        1 - collision with sides,
-        2 - collision with corners
+            - 0: No collision
+            - 1: Collision on the Y axis
+            - 2: Collision on the X axis
+            - 3: Collision on the corner
     */
-    int checkAABBCollisionWithCorners(Object& obj1, Object& obj2) {
+    unsigned int checkAABBCollisionComplex(Object& obj1, Object& obj2) {
         glm::vec2 obj1Position = obj1.getPosition();
         glm::vec2 obj1Size = obj1.getSize();
         glm::vec2 obj2Position = obj2.getPosition();
         glm::vec2 obj2Size = obj2.getSize();
 
-        // Check collision on the x-axis
-        bool collisionX = obj1Position.x + obj1Size.x / 2 >= obj2Position.x - obj2Size.x / 2 &&
-                        obj2Position.x + obj2Size.x / 2 >= obj1Position.x - obj1Size.x / 2;
+        // Calculate the edges of both objects
+        float obj1Left = obj1Position.x - obj1Size.x / 2;
+        float obj1Right = obj1Position.x + obj1Size.x / 2;
+        float obj1Top = obj1Position.y + obj1Size.y / 2;
+        float obj1Bottom = obj1Position.y - obj1Size.y / 2;
 
-        // Check collision on the y-axis
-        bool collisionY = obj1Position.y + obj1Size.y / 2 >= obj2Position.y - obj2Size.y / 2 &&
-                        obj2Position.y + obj2Size.y / 2 >= obj1Position.y - obj1Size.y / 2;
+        float obj2Left = obj2Position.x - obj2Size.x / 2;
+        float obj2Right = obj2Position.x + obj2Size.x / 2;
+        float obj2Top = obj2Position.y + obj2Size.y / 2;
+        float obj2Bottom = obj2Position.y - obj2Size.y / 2;
 
-        // If there's no collision at all
-        if (!collisionX || !collisionY) {
-            return 0;  // No collision
+        // Check for collision
+        bool collisionX = obj1Right >= obj2Left && obj2Right >= obj1Left;
+        bool collisionY = obj1Top >= obj2Bottom && obj2Top >= obj1Bottom;
+
+        // Determine collision type
+        if (collisionX && collisionY) {
+            // Calculate overlap on each axis
+            float overlapX = std::min(obj1Right, obj2Right) - std::max(obj1Left, obj2Left);
+            float overlapY = std::min(obj1Top, obj2Top) - std::max(obj1Bottom, obj2Bottom);
+
+            if (overlapX < overlapY) {
+                return 2; // Collision primarily on X axis
+            } else if (overlapY < overlapX) {
+                return 1; // Collision primarily on Y axis
+            } else {
+                return 3; // Collision on the corner (equal overlap)
+            }
         }
 
-        // Now, let's differentiate between a side collision and a corner collision
-        // Calculate the overlap on both axes
-        float overlapX = std::min(obj1Position.x + obj1Size.x / 2, obj2Position.x + obj2Size.x / 2) -
-                        std::max(obj1Position.x - obj1Size.x / 2, obj2Position.x - obj2Size.x / 2);
-        float overlapY = std::min(obj1Position.y + obj1Size.y / 2, obj2Position.y + obj2Size.y / 2) -
-                        std::max(obj1Position.y - obj1Size.y / 2, obj2Position.y - obj2Size.y / 2);
-
-        // If both overlaps are small enough, we consider it a corner collision
-        if (overlapX < obj1Size.x * 0.2f && overlapY < obj1Size.y * 0.2f) {
-            return 2;  // Collision at a corner
-        }
-
-        // Otherwise, it's a side collision
-        return 1;  // Collision at the sides
+        return 0; // No collision
     }
 
 
@@ -89,6 +94,52 @@ namespace Collisions {
         difference = closest - circle_center;
 
         return glm::length(difference) < circle.getSize().x / 2.0f;
+    }
+
+    /* 
+        Check if a circle is colliding with an object (AABB)
+        Returns:
+            - 0: No collision
+            - 1: Collision on the Y axis
+            - 2: Collision on the X axis
+            - 3: Collision on the corner
+
+    */
+    unsigned int checkCircleCollisionComplex(Object& circle, Object& obj) { 
+        // Get center point of circle
+        glm::vec2 circle_center = circle.getPosition();
+
+        // Calculate AABB info (center, half-extents)
+        glm::vec2 aabb_half_extents = obj.getSize() / 2.0f;
+        glm::vec2 aabb_center = obj.getPosition();
+
+        // Get difference vector between both centers
+        glm::vec2 difference = circle_center - aabb_center;
+        glm::vec2 clamped = glm::clamp(difference, -aabb_half_extents, aabb_half_extents);
+
+        // Add clamped value to AABB_center and we get the value of box closest to circle
+        glm::vec2 closest = aabb_center + clamped;
+
+        // Retrieve vector between center circle and closest point AABB and check if length <= radius
+        difference = closest - circle_center;
+
+        if(glm::length(difference) < circle.getSize().x / 2.0f) {
+            float offset = 0.01;
+
+            bool collisionY = circle.getPosition().x > (obj.getPosition().x - obj.getSize().x / 2 - offset) && circle.getPosition().x < (obj.getPosition().x + obj.getSize().x / 2 + offset);
+
+            bool collisionX = circle.getPosition().y > (obj.getPosition().y - obj.getSize().y / 2 - offset) && circle.getPosition().y < (obj.getPosition().y + obj.getSize().y / 2 + offset);
+
+            if (collisionY) {
+                return 1; // Collision on the Y axis
+            } else if (collisionX) {
+                return 2; // Collision on the X axis
+            } else {
+                return 3; // Collision on the corner
+            }
+        } else {
+            return 0; // No collision
+        }
     }
 
     /**
