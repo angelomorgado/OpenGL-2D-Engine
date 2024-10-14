@@ -21,12 +21,18 @@ void Texture::load(const char* path) {
     // stbi_set_flip_vertically_on_load(true);
     data = stbi_load(path, &width, &height, &nrChannels, 0);
     GLenum format;
-    if (nrChannels == 1)
+    if (nrChannels == 1) {
         format = GL_RED;
-    else if (nrChannels == 3)
+        transparent = false;
+    }
+    else if (nrChannels == 3) {
         format = GL_RGB;
-    else if (nrChannels == 4)
+        transparent = false;
+    }
+    else if (nrChannels == 4) {
         format = GL_RGBA;
+        transparent = true;
+    }
     else
         format = GL_RGB; // Default to GL_RGB if the number of channels is unexpected
     if (data) {
@@ -54,4 +60,8 @@ void Texture::clean() {
 
 unsigned int Texture::getID() {
     return ID;
+}
+
+bool Texture::isTransparent() {
+    return transparent;
 }

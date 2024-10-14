@@ -12,12 +12,14 @@ public:
     void clean();
     unsigned int getID();
     const char* getUniformName();
+    bool isTransparent();
 private:
     unsigned int ID, textureUnit;
     const char* path;
     const char* uniformName;
     int width, height, nrChannels;
     unsigned char* data;
+    bool transparent;
 };
 
 #endif

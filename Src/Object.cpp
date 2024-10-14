@@ -37,8 +37,14 @@ void Object::render(Shader shader, Texture texture) {
         shader.use();
         shader.setMat4("transform", transform);
         if (texture.getID()) {
+            if(texture.isTransparent()) {
+                glEnable(GL_BLEND);
+                glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            }
             texture.bind(0);
             shader.setInt("texture1", 0);
+        } else {
+            glBindTexture(GL_TEXTURE_2D, 0);
         }
     }
 
@@ -49,6 +55,10 @@ void Object::render(Shader shader, Texture texture) {
     }
     else {
         glDrawElements(shape.drawFormat, shape.numberOfVertices, GL_UNSIGNED_INT, 0);
+    }
+
+    if(texture.isTransparent()) {
+        glDisable(GL_BLEND);
     }
 
     glBindVertexArray(0);

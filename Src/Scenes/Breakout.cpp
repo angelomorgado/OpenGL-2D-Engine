@@ -34,6 +34,7 @@ void Breakout::load() {
     screenShape.createScreen();
 
     // Load shaders
+    boxShader.load("standard");
     textureShader.load("standardTexture");
     textShader.load("text");
     screenShader.load("noColorTexture");
@@ -41,7 +42,8 @@ void Breakout::load() {
     // Load textures
     boxTexture.load("Media/Textures/container.jpg");
     ballTexture.load("Media/Textures/awesomeface.png");
-    paddleTexture.load("Media/Textures/container.jpg");
+    paddleTexture.load("Media/Textures/paddle.png");
+    screenTexture.load("Media/Textures/hex-background.jpg");
 
     // Load objects
     ball.load(circleShape, glm::vec2(0.0f, -0.8f), 0.0f, glm::vec2(0.05f));
@@ -99,25 +101,31 @@ void Breakout::render() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // Render objects (The order matters)
-    screen.render(screenShader);
+    screen.render(screenShader, screenTexture);
     ball.render(textureShader, ballTexture);
-    paddle.render(textureShader, paddleTexture);
     drawBoxField();
+    paddle.render(textureShader, paddleTexture);
 
     // Render text
     // font1.renderText("Collisions Scene", glm::vec2(10.0f, 10.0f), 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 }
 
 void Breakout::drawBoxField() { 
+    glm::vec3 boxColor = glm::vec3(1.0, 1.0, 1.0);
     for (int i=0; i<4; i++) {
         // 9 columns
         for (int j=0; j<9; j++) {
             if (boxesField[i][j]) {
                 box.setPosition(boxesPosition[i][j]);
-                box.render(textureShader, boxTexture);
+                boxShader;
+                boxShader.setVec3("customColor", boxColor);
+                box.render(boxShader);
             }
         }
+        boxColor.x -= 0.1;
+        boxColor.y -= 0.1;
     }
+    textureShader.setVec3("customColor", glm::vec3(1.0));
 }
 // ==================================================== Collision Detection ====================================================
 

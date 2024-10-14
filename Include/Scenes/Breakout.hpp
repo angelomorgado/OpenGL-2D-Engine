@@ -32,7 +32,7 @@ private:
     
     // Object Attributes
     Shape squareShape, circleShape, screenShape;
-    Shader textureShader, textShader, screenShader;
+    Shader boxShader, textureShader, textShader, screenShader;
     Texture ballTexture, boxTexture, paddleTexture, screenTexture;
     Font font1;
     Object box, ball, paddle, screen;
