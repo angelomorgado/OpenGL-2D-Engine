@@ -31,10 +31,12 @@ void Breakout::load() {
     // Shapes
     squareShape.createSquare();
     circleShape.createCircle();
+    screenShape.createScreen();
 
     // Load shaders
     textureShader.load("standardTexture");
     textShader.load("text");
+    screenShader.load("noColorTexture");
 
     // Load textures
     boxTexture.load("Media/Textures/container.jpg");
@@ -46,6 +48,7 @@ void Breakout::load() {
     float boxMult = reader.GetReal("Game", "boxSizeMultiplier", 1.0);
     box.load(squareShape, glm::vec2(0.3f, 0.0f), 0.0f, glm::vec2(0.1f, 0.05) * boxMult);
     paddle.load(squareShape, glm::vec2(0.0,-0.9), 0.0f, glm::vec2(0.3f, 0.05f));
+    screen.load(screenShape);
 
     // Set the speed and direction
     ballSpeed = reader.GetReal("Game", "ballSpeed", 2.0) / 100;
@@ -96,6 +99,7 @@ void Breakout::render() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // Render objects (The order matters)
+    screen.render(screenShader);
     ball.render(textureShader, ballTexture);
     paddle.render(textureShader, paddleTexture);
     drawBoxField();
@@ -148,7 +152,6 @@ void Breakout::borderCollision(Object& obj) {
 void Breakout::checkPaddleBallCollision() {
     unsigned int collision = Collisions::checkCircleCollisionComplex(ball, paddle);
     if (collision) {
-        std::cout << collision << " Collision\n";
         ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep1.wav", NULL);
         
         if (collision == 1) {

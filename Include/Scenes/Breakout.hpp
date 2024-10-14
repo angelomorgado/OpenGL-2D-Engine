@@ -31,11 +31,11 @@ private:
     glm::vec2 boxesPosition[4][9];
     
     // Object Attributes
-    Shape squareShape, circleShape;
-    Shader textureShader, textShader;
-    Texture ballTexture, boxTexture, paddleTexture;
+    Shape squareShape, circleShape, screenShape;
+    Shader textureShader, textShader, screenShader;
+    Texture ballTexture, boxTexture, paddleTexture, screenTexture;
     Font font1;
-    Object box, ball, paddle;
+    Object box, ball, paddle, screen;
     float ballSpeed, paddleSpeed;
     glm::vec2 ballDirection;
     ma_engine audioEngine;

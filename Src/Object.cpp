@@ -1,4 +1,5 @@
 #include <Object.hpp>
+#include <iostream>
 
 void Object::load(Shape shape, glm::vec2 position, float rotation, glm::vec2 scale) {
     this->shape = shape;

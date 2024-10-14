@@ -9,10 +9,10 @@
 void Shape::createSquare() {
     vertices = {
         // Positions          // Colors        // Texture Coords
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f, // Top Left
-        0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 1.0f,   1.0f, 1.0f, // Top Right
-        0.5f, -0.5f, 0.0f,    1.0f, 1.0f, 1.0f,   1.0f, 0.0f, // Bottom Right
-        -0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f  // Bottom Left
+        -0.5f,  0.5f,  1.0f, 1.0f, 1.0f,   0.0f, 1.0f, // Top Left
+        0.5f,  0.5f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f, // Top Right
+        0.5f, -0.5f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f, // Bottom Right
+        -0.5f, -0.5f,  1.0f, 1.0f, 1.0f,   0.0f, 0.0f  // Bottom Left
     };
 
     indices = {
@@ -21,9 +21,9 @@ void Shape::createSquare() {
     };
 
     vertexAttributes = {
-        { 0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0 },                   // Position attribute (vec3)
-        { 1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)) }, // Color attribute (vec3)
-        { 2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)) }  // Texture attribute (vec2)
+        { 0, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)0 },                   // Position attribute (vec3)
+        { 1, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(2 * sizeof(float)) }, // Color attribute (vec3)
+        { 2, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(5 * sizeof(float)) }  // Texture attribute (vec2)
     };
 
     drawFormat = GL_TRIANGLES;
@@ -47,8 +47,8 @@ void Shape::createScreen() {
     indices = {};
 
     vertexAttributes = {
-        { 0, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0 },                   // Position attribute (vec2)
-        { 1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)) }  // Texture attribute (vec2)
+        { 0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0 },                   // Position attribute (vec2)
+        { 1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)) }  // Texture attribute (vec2)
     };
 
     drawFormat = GL_TRIANGLES;
@@ -60,9 +60,9 @@ void Shape::createScreen() {
 void Shape::createTriangle() {
     vertices = {
         // Positions          // Colors        // Texture Coords
-        0.0f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.5f, 1.0f, // Top
-        0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f, // Bottom Right
-        -0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,   0.0f, 0.0f  // Bottom Left
+        0.0f,  0.5f,   1.0f, 1.0f, 1.0f,   0.5f, 1.0f, // Top
+        0.5f, -0.5f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f, // Bottom Right
+        -0.5f, -0.5f,  1.0f, 1.0f, 1.0f,   0.0f, 0.0f  // Bottom Left
     };
 
     indices = {
@@ -70,9 +70,9 @@ void Shape::createTriangle() {
     };
 
     vertexAttributes = {
-        { 0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0 },                   // Position attribute (vec3)
-        { 1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)) }, // Color attribute (vec3)
-        { 2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)) }  // Texture attribute (vec2)
+        { 0, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)0 },                   // Position attribute (vec3)
+        { 1, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(2 * sizeof(float)) }, // Color attribute (vec3)
+        { 2, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(5 * sizeof(float)) }  // Texture attribute (vec2)
     };
 
     drawFormat = GL_TRIANGLES;
@@ -81,7 +81,7 @@ void Shape::createTriangle() {
 }
 
 void Shape::createCircle(int segments) {
-    vertices = { 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.5f, 0.5f }; // Center vertex
+    vertices = { 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.5f, 0.5f }; // Center vertex
 
     for (unsigned int i = 0; i <= segments; ++i) {
         float angle = 2.0f * M_PI * i / segments;
@@ -89,7 +89,7 @@ void Shape::createCircle(int segments) {
         float y = 0.5f * sin(angle);
 
         vertices.insert(vertices.end(), {
-            x, y, 0.0f,   1.0f, 1.0f, 1.0f,   (x + 0.5f), (y + 0.5f)
+            x, y,   1.0f, 1.0f, 1.0f,   (x + 0.5f), (y + 0.5f)
         });
 
         if (i > 0) {
@@ -98,9 +98,9 @@ void Shape::createCircle(int segments) {
     }
 
     vertexAttributes = {
-        { 0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0 },                   // Position attribute (vec3)
-        { 1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)) }, // Color attribute (vec3)
-        { 2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)) }  // Texture attribute (vec2)
+        { 0, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)0 },                   // Position attribute (vec3)
+        { 1, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(2 * sizeof(float)) }, // Color attribute (vec3)
+        { 2, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(5 * sizeof(float)) }  // Texture attribute (vec2)
     };
 
     drawFormat = GL_TRIANGLES;
