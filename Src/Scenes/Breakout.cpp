@@ -11,8 +11,9 @@
 #include <INIReader.h>
 
 // ==================================================== Setup ====================================================
+INIReader reader("Config/Breakout.ini");
+
 Breakout::Breakout() {
-    INIReader reader("Config.ini");
     title = "Collisions Scene";
     screenWidth = reader.GetInteger("Window", "width", 800);
     screenHeight = reader.GetInteger("Window", "height", 600);
@@ -38,15 +39,17 @@ void Breakout::load() {
     // Load textures
     boxTexture.load("Media/Textures/container.jpg");
     ballTexture.load("Media/Textures/awesomeface.png");
+    paddleTexture.load("Media/Textures/container.jpg");
 
     // Load objects
-    ball.load(circleShape, glm::vec2(0.0f, -0.8f), 0.0f, glm::vec2(0.3f));
-    box.load(squareShape, glm::vec2(0.3f, 0.0f), 0.0f, glm::vec2(0.3f));
+    ball.load(circleShape, glm::vec2(0.0f, -0.8f), 0.0f, glm::vec2(0.05f));
+    float boxMult = reader.GetReal("Game", "boxSizeMultiplier", 1.0);
+    box.load(squareShape, glm::vec2(0.3f, 0.0f), 0.0f, glm::vec2(0.1f, 0.05) * boxMult);
     paddle.load(squareShape, glm::vec2(0.0,-0.9), 0.0f, glm::vec2(0.3f, 0.05f));
 
     // Set the speed and direction
-    ballSpeed = 0.002f;
-    ballDirection = glm::vec2(0.0f, 1.0f);
+    ballSpeed = reader.GetReal("Game", "ballSpeed", 0.002);
+    ballDirection = glm::vec2(1.0f, 1.0f);
 
     font1.loadFont("Media/Fonts/Roboto-Regular.ttf", 48, textShader, screenWidth, screenHeight);
 
@@ -54,6 +57,21 @@ void Breakout::load() {
     if (ma_engine_init(nullptr, &audioEngine) != MA_SUCCESS) {
         std::cout << "Failed to initialize audio engine\n";
     }
+
+    // Box field
+    bool field[4][9] = {{1, 1, 1, 1, 1, 1, 1, 1, 1},
+                        {1, 1, 1, 1, 1, 1, 1, 1, 1},
+                        {1, 1, 1, 1, 1, 1, 1, 1, 1},
+                        {1, 1, 1, 1, 1, 1, 1, 1, 1}};
+
+    // Manually copy values using loops
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 9; j++) {
+            boxesField[i][j] = field[i][j];
+        }
+    }
+
+    setupBoxPositions();
 }
 
 // ==================================================== Main Loop ====================================================
@@ -62,6 +80,8 @@ void Breakout::update() {
     processInput();
 
     borderCollision(ball);
+    checkBoxBallCollision();
+    checkPaddleBallCollision();
     ball.move(ballDirection * ballSpeed);
 
     // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
@@ -76,13 +96,24 @@ void Breakout::render() {
 
     // Render objects (The order matters)
     ball.render(textureShader, ballTexture);
-    box.render(textureShader, boxTexture);
     paddle.render(textureShader, paddleTexture);
+    drawBoxField();
 
     // Render text
-    font1.renderText("Collisions Scene", glm::vec2(10.0f, 10.0f), 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+    // font1.renderText("Collisions Scene", glm::vec2(10.0f, 10.0f), 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 }
 
+void Breakout::drawBoxField() { 
+    for (int i=0; i<4; i++) {
+        // 9 columns
+        for (int j=0; j<9; j++) {
+            if (boxesField[i][j]) {
+                box.setPosition(boxesPosition[i][j]);
+                box.render(textureShader, boxTexture);
+            }
+        }
+    }
+}
 // ==================================================== Collision Detection ====================================================
 
 // Check if the object is colliding with the borders of the window
@@ -112,6 +143,44 @@ void Breakout::borderCollision(Object& obj) {
             break;
     }
 }
+
+void Breakout::checkPaddleBallCollision() {
+    if (Collisions::checkAABBCollision(ball, paddle)) {
+        ballDirection.y = -ballDirection.y;
+    }
+}
+
+void Breakout::checkBoxBallCollision() {
+    for (int i=0; i<4; i++) {
+        // 9 columns
+        for (int j=0; j<9; j++) {
+            box.setPosition(boxesPosition[i][j]);
+            if (boxesField[i][j] && Collisions::checkCircleCollision(ball, box)) {
+                boxesField[i][j] = false;
+                ballDirection.y = -ballDirection.y;
+            }
+        }
+    }
+}
+
+// ======================================= Aux ===========================================================
+
+void Breakout::setupBoxPositions() {
+    float paddingX = reader.GetReal("Game", "boxPaddingX", 0.01);
+    float paddingY = reader.GetReal("Game", "boxPaddingY", 0.01);
+    glm::vec2 pos = glm::vec2(-1.0 + paddingX + (box.getSize().x / 2) + 0.05, 1.0 - paddingY - (box.getSize().y / 2));
+    // 4 rows
+    for (int i=0; i<4; i++) {
+        // 9 columns
+        for (int j=0; j<9; j++) {
+            boxesPosition[i][j] = pos;
+            pos.x += (box.getSize().x + paddingX);
+        }
+        pos.x = -1.0 + paddingX + (box.getSize().x / 2) + 0.05;
+        pos.y -= (box.getSize().y + paddingY);
+    }
+}
+
 // =======================================================================================================
 
 int Breakout::clean() {

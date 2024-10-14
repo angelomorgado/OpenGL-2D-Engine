@@ -62,8 +62,8 @@ void CircleInsideSquareScene::render() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // The order in wich the objects are rendered is important
-    // square.render(textureShader, texture1);
-    // circle.render(textureShader, texture2);
+    square.render(textureShader, texture1);
+    circle.render(textureShader, texture2);
 }
 
 // ==================================================== Collision Detection ====================================================

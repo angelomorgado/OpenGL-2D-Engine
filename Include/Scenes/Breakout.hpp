@@ -27,6 +27,8 @@ private:
     std::string title;
     bool fullscreen;
     bool resizable;
+    bool boxesField[4][9];
+    glm::vec2 boxesPosition[4][9];
     
     // Object Attributes
     Shape squareShape, circleShape;
@@ -40,7 +42,11 @@ private:
     bool flag;
 
     void processInput();
+    void setupBoxPositions();
     void borderCollision(Object& obj);
+    void drawBoxField();
+    void checkPaddleBallCollision();
+    void checkBoxBallCollision();
 };
 
 #endif

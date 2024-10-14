@@ -17,13 +17,11 @@ Follow [this tutorial](https://code.visualstudio.com/docs/cpp/config-mingw).
     
 ### Scenes
 
-- `StandardScene`: A scene that renders a simple window with a moving triangle that changes color.
-
-- `StandardTextureScene`: A scene that shows a rectangle with a texture moving.
-
 - `CollisionsScene`: A scene that shows objects in the screen moving and colliding with each other.
 
 - `CircleInsideSquareScene`: A scene that shows a square that's movable with the wasd keys and a circle inside the square that can't leave the square.
+
+- `Breakout`: A scene that shows a Breakout game.
 
 ### Features
 
@@ -197,6 +195,7 @@ standardShader.clean();
 If you have uniforms in the shader, you can set them like this:
 
 ```cpp
+unsinged int getID();
 void setBool(std::string& name, bool value);
 void setInt(std::string& name, int value);
 void setFloat(std::string& name, float value);
@@ -221,7 +220,7 @@ This engine can apply textures to objects. To load a texture:
 Texture texture;
 
 // In the load method of the scene
-texture.load("Textures/texture.png", Shader* shader = nullptr, std::string uniformName); // the shader and uniform name are optional if you want to use only one texture in the object but are recommended to use
+texture.load("Textures/texture.png");
 
 // In the render method of the scene before drawing the object
 texture.bind(int textureUnit = 0); // The texture unit is optional and is used to bind the texture to a specific texture unit
@@ -240,12 +239,6 @@ To get the texture ID:
 
 ```cpp
 GLuint textureID = texture.getID();
-```
-
-To get the texture uniform name:
-
-```cpp
-const char* uniformName = texture.getUniformName();
 ```
 
 ---
@@ -297,6 +290,8 @@ vertices = shape.vertices;
 indices = shape.indices;
 size = shape.size;
 radius = shape.radius; // Only for the circle shape
+std::vector<VertexAttribute> vertexAttributes;
+GLenum drawFormat; // E.g., GL_TRIANGLES, GL_TRIANGLE_STRIP, GL_LINE_LOOP, etc.
 ```
 ---
 
@@ -309,10 +304,10 @@ The Object class represents a renderable object that can be loaded with a shape,
 Object object;
 
 // In the load method of the scene
-object.load(shape, shader, {texture1, texture2}, position, rotation, scale);
+object.load(shape, position, rotation, scale);
 
 // In the render method of the scene
-object.render();
+object.render(shader, texture);
 
 // In the clean method of the scene
 object.clean();
@@ -328,8 +323,6 @@ void render() // Renders the object
 void clean() // Cleans the object from the GPU
 
 void move(glm::vec3 direction) // Moves the object in a direction (instead of setting the position)
-
-bool isColliding(Object object) // Checks if the object is colliding with another object
 
 // Getters
 glm::vec2 getPosition()
