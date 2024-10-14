@@ -36,7 +36,7 @@ private:
     Texture ballTexture, boxTexture, paddleTexture;
     Font font1;
     Object box, ball, paddle;
-    float ballSpeed;
+    float ballSpeed, paddleSpeed;
     glm::vec2 ballDirection;
     ma_engine audioEngine;
     bool flag;

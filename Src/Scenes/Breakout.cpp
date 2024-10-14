@@ -48,8 +48,9 @@ void Breakout::load() {
     paddle.load(squareShape, glm::vec2(0.0,-0.9), 0.0f, glm::vec2(0.3f, 0.05f));
 
     // Set the speed and direction
-    ballSpeed = reader.GetReal("Game", "ballSpeed", 0.002);
+    ballSpeed = reader.GetReal("Game", "ballSpeed", 2.0) / 100;
     ballDirection = glm::vec2(1.0f, 1.0f);
+    paddleSpeed = reader.GetReal("Game", "paddleSpeed", 3.0) / 100;
 
     font1.loadFont("Media/Fonts/Roboto-Regular.ttf", 48, textShader, screenWidth, screenHeight);
 
@@ -145,8 +146,13 @@ void Breakout::borderCollision(Object& obj) {
 }
 
 void Breakout::checkPaddleBallCollision() {
-    if (Collisions::checkAABBCollision(ball, paddle)) {
+    int collision = Collisions::checkAABBCollision(ball, paddle);
+    if (collision) {
+        ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep1.wav", NULL);
         ballDirection.y = -ballDirection.y;
+        if (collision == 2) {
+            ballDirection.x = -ballDirection.x;
+        }
     }
 }
 
@@ -158,6 +164,7 @@ void Breakout::checkBoxBallCollision() {
             if (boxesField[i][j] && Collisions::checkCircleCollision(ball, box)) {
                 boxesField[i][j] = false;
                 ballDirection.y = -ballDirection.y;
+                ma_engine_play_sound(&audioEngine, "Media/Sounds/bleep2.mp3", NULL);
             }
         }
     }
@@ -204,11 +211,11 @@ void Breakout::processInput()
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
     
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS && paddle.getPosition().x - paddle.getSize().x /2 > -1.0) {
         paddle.move(glm::vec2(-0.01f, 0.0f));
     }
 
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS && paddle.getPosition().x + paddle.getSize().x /2 < 1.0) {
         paddle.move(glm::vec2(0.01f, 0.0f));
     }
 
