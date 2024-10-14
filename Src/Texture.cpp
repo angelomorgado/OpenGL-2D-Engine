@@ -2,9 +2,7 @@
 #include <stb_image.h>
 
 #include <Texture.hpp>
-
 #include <iostream>
-#include <glad/glad.h>
 
 void Texture::load(const char* path) {
     this->path = path;
@@ -64,4 +62,16 @@ unsigned int Texture::getID() {
 
 bool Texture::isTransparent() {
     return transparent;
+}
+
+void Texture::setWrappingParameters(GLenum wrapS, GLenum wrapT) {
+    // Bind the texture to ensure changes apply to the correct texture
+    glBindTexture(GL_TEXTURE_2D, ID);
+    
+    // Set texture wrapping for the S and T axes
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapS);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapT);
+    
+    // Unbind the texture to avoid affecting other textures
+    glBindTexture(GL_TEXTURE_2D, 0);
 }

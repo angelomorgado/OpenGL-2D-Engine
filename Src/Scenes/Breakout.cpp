@@ -13,6 +13,18 @@
 // ==================================================== Setup ====================================================
 INIReader reader("Config/Breakout.ini");
 
+/*
+TODO:
+- Make more types of levels (e.g., footbal, futuristic, default)
+- Implement random levels
+- Make lose/win conditions
+- Make it harder with time
+- HUD
+- Music
+- Different Block types
+- Powerups
+*/
+
 Breakout::Breakout() {
     title = "Collisions Scene";
     screenWidth = reader.GetInteger("Window", "width", 800);
@@ -38,12 +50,15 @@ void Breakout::load() {
     textureShader.load("standardTexture");
     textShader.load("text");
     screenShader.load("noColorTexture");
+    screenShader.use();
+    screenShader.setVec3("customColor", glm::vec3(0.1, 1.0, 0.1));
 
     // Load textures
     boxTexture.load("Media/Textures/container.jpg");
-    ballTexture.load("Media/Textures/awesomeface.png");
-    paddleTexture.load("Media/Textures/paddle.png");
-    screenTexture.load("Media/Textures/hex-background.jpg");
+    ballTexture.load("Media/Textures/football.png");
+    paddleTexture.load("Media/Textures/paddle-goal.png");
+    screenTexture.load("Media/Textures/football-field.jpg");
+    screenTexture.setWrappingParameters(GL_REPEAT, GL_CLAMP_TO_BORDER);
 
     // Load objects
     ball.load(circleShape, glm::vec2(0.0f, -0.8f), 0.0f, glm::vec2(0.05f));
@@ -111,19 +126,19 @@ void Breakout::render() {
 }
 
 void Breakout::drawBoxField() { 
-    glm::vec3 boxColor = glm::vec3(1.0, 1.0, 1.0);
+    glm::vec3 boxColor = glm::vec3(0.0, 1.0, 0.0);
+    boxShader.use();
     for (int i=0; i<4; i++) {
         // 9 columns
         for (int j=0; j<9; j++) {
             if (boxesField[i][j]) {
                 box.setPosition(boxesPosition[i][j]);
-                boxShader;
                 boxShader.setVec3("customColor", boxColor);
                 box.render(boxShader);
             }
         }
-        boxColor.x -= 0.1;
-        boxColor.y -= 0.1;
+        boxColor.x += 0.1;
+        boxColor.z += 0.1;
     }
     textureShader.setVec3("customColor", glm::vec3(1.0));
 }
@@ -209,7 +224,10 @@ void Breakout::checkBoxBallCollision() {
 void Breakout::setupBoxPositions() {
     float paddingX = reader.GetReal("Game", "boxPaddingX", 0.01);
     float paddingY = reader.GetReal("Game", "boxPaddingY", 0.01);
-    glm::vec2 pos = glm::vec2(-1.0 + paddingX + (box.getSize().x / 2) + 0.05, 1.0 - paddingY - (box.getSize().y / 2));
+    float offsetY  = reader.GetReal("Game", "offsetY", 0.1);
+
+    glm::vec2 pos = glm::vec2(-1.0 + paddingX + (box.getSize().x / 2) + 0.05, 1.0 - paddingY - offsetY - (box.getSize().y / 2));
+
     // 4 rows
     for (int i=0; i<4; i++) {
         // 9 columns

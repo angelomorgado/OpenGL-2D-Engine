@@ -1,6 +1,7 @@
 #ifndef TEXTURE_HPP
 #define TEXTURE_HPP
 
+#include <glad/glad.h>
 #include <glm/glm.hpp>
 #include <string>
 
@@ -13,6 +14,7 @@ public:
     unsigned int getID();
     const char* getUniformName();
     bool isTransparent();
+    void setWrappingParameters(GLenum wrapS, GLenum wrapT);
 private:
     unsigned int ID, textureUnit;
     const char* path;
