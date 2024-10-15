@@ -27,7 +27,7 @@ private:
     std::string title;
     bool fullscreen;
     bool resizable;
-    bool boxesField[4][9];
+    unsigned int boxesField[4][9];
     glm::vec2 boxesPosition[4][9];
     
     // Object Attributes
@@ -36,10 +36,12 @@ private:
     Texture ballTexture, boxTexture, paddleTexture, screenTexture;
     Font font1;
     Object box, ball, paddle, screen;
-    float ballSpeed, paddleSpeed;
+    float ballSpeed, ballSpeedIncrease, paddleSpeed;
     glm::vec2 ballDirection;
     ma_engine audioEngine;
-    bool flag;
+    bool levelStartedFlag, levelFailed;
+    unsigned int level = 1;
+    unsigned int numOfBlocks;
 
     void processInput();
     void setupBoxPositions();
@@ -47,6 +49,10 @@ private:
     void drawBoxField();
     void checkPaddleBallCollision();
     void checkBoxBallCollision();
+    void loadLevel();
+    int isLevelFinished();
+    void renderText();
+    void cleanObjects();
 };
 
 #endif

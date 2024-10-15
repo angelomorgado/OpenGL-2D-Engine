@@ -7,7 +7,7 @@
 
 class Texture {
 public:
-    void load(const char* path);
+    void load(const char* path = "Media/Textures/default.jpg");
     void bind(int textureUnit = 0);
     void unbind();
     void clean();
