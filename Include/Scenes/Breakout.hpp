@@ -27,8 +27,6 @@ private:
     std::string title;
     bool fullscreen;
     bool resizable;
-    unsigned int boxesField[4][9];
-    glm::vec2 boxesPosition[4][9];
     
     // Object Attributes
     Shape squareShape, circleShape, screenShape;
@@ -42,6 +40,9 @@ private:
     bool levelStartedFlag, levelFailed;
     unsigned int level = 1;
     unsigned int numOfBlocks;
+    unsigned int boxesField[4][9];
+    glm::vec2 boxesPosition[4][9];
+    std::string levelTheme;
 
     void processInput();
     void setupBoxPositions();
@@ -52,6 +53,8 @@ private:
     void loadLevel();
     int isLevelFinished();
     void renderText();
+    void loadBlocksFromJSON(const std::string& levelName);
+    void loadRandomBlocksFromJSON();
     void cleanObjects();
 };
 

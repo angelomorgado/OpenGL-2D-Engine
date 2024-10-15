@@ -10,17 +10,18 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <INIReader.h>
+#include <nlohmann/json.hpp>
+#include <fstream>
+#include <stdexcept>
+#include <cstdlib>
+#include <ctime>
 
 // ==================================================== Setup ====================================================
-INIReader reader("Config/Breakout.ini");
+INIReader reader("Config/Breakout/Breakout.ini");
 
 /*
 TODO:
-- Make more types of levels (e.g., footbal, futuristic, default)
 - Implement random levels
-- Make lose/win conditions
-- Make it harder with time
-- HUD
 - Music
 - Different Block types
 - Powerups
@@ -221,9 +222,12 @@ void Breakout::loadLevel() {
     levelStartedFlag = false;
     levelFailed = false;
 
+    // Load field
+    // loadBlocksFromJSON("level2");
+    loadRandomBlocksFromJSON();
+
     // Get info from INI file
-    std::string levelTheme = reader.GetString("Game", "levelTheme", "Default");
-    bool dynamicColors = reader.GetBoolean(levelTheme, "dynamicColors", true); 
+    bool dynamicColors = reader.GetBoolean(levelTheme, "dynamicColors", false); 
 
     // Load textures
     boxTexture.load(reader.GetString(levelTheme, "boxTexture", "Media/Textures/default.jpg").c_str());
@@ -257,22 +261,9 @@ void Breakout::loadLevel() {
     }
 
     // Set the speed and direction
-    ballSpeed = reader.GetReal("Game", "ballSpeed", 2.0) / 100 + level / 10;
+    ballSpeed = reader.GetReal("Game", "ballSpeed", 2.0) / 100 + level / 5;
     ballDirection = glm::vec2(0.0f);
     paddleSpeed = reader.GetReal("Game", "paddleSpeed", 3.0) / 100;
-
-    // Box field
-    bool field[4][9] = {{1, 1, 1, 1, 1, 1, 1, 1, 1},
-                        {1, 1, 1, 1, 1, 1, 1, 1, 1},
-                        {1, 1, 1, 1, 1, 1, 1, 1, 1},
-                        {1, 1, 1, 1, 1, 1, 1, 1, 1}};
-
-    // Manually copy values using loops
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 9; j++) {
-            boxesField[i][j] = field[i][j];
-        }
-    }
 
     // Create array with positions
     setupBoxPositions();
@@ -355,6 +346,65 @@ void Breakout::renderText() {
         std::string s ="Level " + std::to_string(level) + " | Remaining Blocks: " + std::to_string(numOfBlocks);
         font1.renderText(s, glm::vec2(middleFontXPos * screenWidth, middleFontYPos * screenHeight), middleFontScale, glm::vec3(1.0f, 1.0f, 1.0f));
     }
+}
+
+void Breakout::loadBlocksFromJSON(const std::string& levelName) {
+    std::ifstream file(reader.GetString("Game", "levelsFilePath", "levels.json"));
+      
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open levels.json");
+    }
+
+    nlohmann::json levels;
+    file >> levels;
+
+    // Check if the level exists
+    if (levels["levels"].find(levelName) == levels["levels"].end()) {
+        throw std::runtime_error("Level " + levelName + " not found in levels.json");
+    }
+
+    // Get the level data
+    auto levelData = levels["levels"][levelName];
+    
+    // Load the layout
+    for (int row = 0; row < 4; ++row) {
+        for (int col = 0; col < 9; ++col) {
+            boxesField[row][col] = levelData["layout"][row][col];
+        }
+    }
+
+    // Load the theme
+    levelTheme = levelData["theme"];
+    std::cout << "Loaded " << levelName << " with theme: " << levelTheme << std::endl;
+}
+
+void Breakout::loadRandomBlocksFromJSON() {
+    std::ifstream file(reader.GetString("Game", "levelsFilePath", "levels.json"));
+    
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open levels.json");
+    }
+
+    nlohmann::json levels;
+    file >> levels;
+
+    // Collect all level names
+    std::vector<std::string> levelNames;
+    for (auto& el : levels["levels"].items()) {
+        levelNames.push_back(el.key());
+    }
+
+    if (levelNames.empty()) {
+        throw std::runtime_error("No levels found in levels.json");
+    }
+
+    // Seed random number generator and pick a random level
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    int randomIndex = std::rand() % levelNames.size();
+    std::string randomLevel = levelNames[randomIndex];
+
+    // Load the randomly chosen level
+    loadBlocksFromJSON(randomLevel);
 }
 
 void Breakout::cleanObjects() {
